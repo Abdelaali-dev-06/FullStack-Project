@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="assets/logo.PNG" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ngcfo - Certificate Verification Platform</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Required Lovable script tag -->
+    <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  </head>
+  <body>
+    <!-- Navigation -->
+    <header class="navbar">
+      <div class="container">
+        <div class="logo">
+          <img src="assets/logo.PNG" alt="ngCFO Logo" class="logo-img">
+          <span class="logo-text">ngcfo<span class="highlight">.COM</span></span>
+        </div>
+        
+        <div class="menu-toggle" id="mobile-menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+        
+        <nav class="nav-menu">
+          <a href="#home" class="nav-link active">Home</a>
+          <a href="#about" class="nav-link">About</a>
+          <a href="#features" class="nav-link">Features</a>
+          <a href="#faq" class="nav-link">FAQ</a>
+          <a href="#contact" class="nav-link">Contact</a>
+          <a href="/blog" class="nav-link">Blog</a>
+          <div class="nav-buttons">
+            <a href="/login/login.html" class="btn-login">Login</a>
+            <a href="/register/register.html" class="btn-signup">Sign Up</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <div class="hero-bg-elements">
+        <div class="bg-circle-1"></div>
+        <div class="bg-circle-2"></div>
+      </div>
+
+      <div class="container">
+        <div class="hero-grid">
+          <!-- Left Content -->
+          <div class="hero-content">
+            <h1 class="fade-in">
+              Secure Certificates Management with 
+              <span class="gradient-text">Blockchain</span>
+            </h1>
+            
+            <p class="fade-in">Here you can verify certificates issued by us.</p>
+            
+            <div class="verification-container fade-in">
+              <div class="verification-card">
+                <h3 class="verification-title">Verify by Certificate ID</h3>
+                <div class="verification-content">
+                  <input type="text" class="input-field" placeholder="Enter Certificate ID">
+                  <button class="btn-verify" id="id-verify-btn">
+                    Verify Certificate
+                    <i class="fas fa-arrow-right"></i>
+                  </button>
+                </div>
+              </div>
+              
+              <div class="verification-card">
+                <h3 class="verification-title">Verify by PDF Upload</h3>
+                <div class="verification-content">
+                  <div class="file-upload">
+                    <i class="fas fa-file-upload"></i>
+                    <p>Drag & drop or click to upload PDF</p>
+                    <input type="file" id="certificate-file" class="file-input" accept=".pdf">
+                  </div>
+                  <button class="btn-verify" id="file-verify-btn">
+                    Verify Certificate
+                    <i class="fas fa-arrow-right"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Image -->
+          <div class="hero-image fade-in">
+            <img src="assets/pic1.jpg" alt="Certificate Verification">
+          </div>
+        </div>
+      </div>
+
+      <!-- Wave Separator -->
+      <div class="wave-separator">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+          <path fill="#FFFFFF" fill-opacity="1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,154.7C960,171,1056,181,1152,165.3C1248,149,1344,107,1392,85.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+        </svg>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag fade-in">About Us</span>
+          <h2 class="fade-in">With <span class="gradient-text">ngcfo.com</span>, you can trust that every certificate is verified, secure, and easy to manage.</h2>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-content">
+            <div class="about-card fade-in">
+              <h3>Revolutionizing Certificate Management</h3>
+              <p>
+                At ngcfo.com, we're revolutionizing certificate management with blockchain technology for secure, tamper-proof verification. Whether you're a school issuing or an employer verifying certificates, our system makes the process easy and reliable.
+              </p>
+              
+              <ul class="feature-list">
+                <li>
+                  <i class="fas fa-check highlight"></i>
+                  <p>Advanced blockchain verification ensures authenticity</p>
+                </li>
+                <li>
+                  <i class="fas fa-check highlight"></i>
+                  <p>Multiple verification methods: ID, QR code, or PDF upload</p>
+                </li>
+                <li>
+                  <i class="fas fa-check highlight"></i>
+                  <p>Immutable certificate records that cannot be tampered with</p>
+                </li>
+              </ul>
+              
+              <a href="#features" class="learn-more">
+                Learn more about our features
+                <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+          
+          <div class="about-image-container fade-in">
+            <div class="about-image-bg"></div>
+            <img src="assets/key.JPG" alt="Certificate Management" class="about-image">
+            
+            <div class="floating-card fc-bottom fade-in">
+              <i class="fas fa-shield-alt"></i>
+              <div>
+                <h4>100% Secure</h4>
+                <p>Blockchain-protected certificates</p>
+              </div>
+            </div>
+            
+            <div class="floating-card fc-top fade-in">
+              <i class="fas fa-bolt"></i>
+              <div>
+                <h4>Instant Verification</h4>
+                <p>Verify in seconds</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag fade-in">Features</span>
+          <h2 class="fade-in">Our platform simplifies certificate management with top-notch security and easy access</h2>
+          <p class="fade-in">Experience the future of certificate verification with our blockchain-powered platform</p>
+        </div>
+
+        <div class="features-grid">
+          <div class="feature-card fade-in">
+            <div class="feature-icon">
+              <i class="fas fa-shield-alt"></i>
+            </div>
+            <h3>Secure Verification</h3>
+            <p>Blockchain ensures certificates are tamper-proof and authentic.</p>
+          </div>
+          
+          <div class="feature-card fade-in" style="animation-delay: 0.2s">
+            <div class="feature-icon">
+              <i class="fas fa-arrow-right"></i>
+            </div>
+            <h3>Easy Access</h3>
+            <p>Instantly verify certificates via QR codes, unique IDs, or PDF uploads.</p>
+          </div>
+          
+          <div class="feature-card fade-in" style="animation-delay: 0.4s">
+            <div class="feature-icon">
+              <i class="fas fa-database"></i>
+            </div>
+            <h3>Immutable Records</h3>
+            <p>Certificates are permanently stored on the blockchain.</p>
+          </div>
+          
+          <div class="feature-card fade-in" style="animation-delay: 0.6s">
+            <div class="feature-icon">
+              <i class="fas fa-user-check"></i>
+            </div>
+            <h3>User-Friendly</h3>
+            <p>Simple tools for schools to issue and employers to verify certificates.</p>
+          </div>
+          
+          <div class="feature-card fade-in" style="animation-delay: 0.8s">
+            <div class="feature-icon">
+              <i class="fas fa-cogs"></i>
+            </div>
+            <h3>Custom Solutions</h3>
+            <p>Bulk issuance and API integrations for enterprises.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag fade-in">FAQ</span>
+          <h2 class="fade-in">Frequently Asked Questions</h2>
+          <p class="fade-in">Find answers to the most common questions about our certificate verification platform</p>
+        </div>
+
+        <div class="accordion">
+          <div class="accordion-item fade-in">
+            <button class="accordion-btn">
+              How does the verification process work?
+              <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="accordion-content">
+              <p>Our verification process is simple yet secure. You can verify certificates through three methods: 1) Enter the certificate ID provided on the document, 2) Scan the QR code printed on the certificate, or 3) Upload the PDF certificate for hash comparison. Our system instantly checks the blockchain for a matching record and confirms authenticity.</p>
+            </div>
+          </div>
+          
+          <div class="accordion-item fade-in" style="animation-delay: 0.1s">
+            <button class="accordion-btn">
+              Is my data secure?
+              <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="accordion-content">
+              <p>Absolutely. We employ enterprise-grade security measures including blockchain technology to ensure all data is secure and immutable. Certificate data is stored with cryptographic protection, and our systems undergo regular security audits. We never store sensitive personal information unnecessarily.</p>
+            </div>
+          </div>
+          
+          <div class="accordion-item fade-in" style="animation-delay: 0.2s">
+            <button class="accordion-btn">
+              How do I get started?
+              <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="accordion-content">
+              <p>Getting started is easy! If you're an educational institution looking to issue certificates, simply create an account, complete the verification process, and you can begin issuing blockchain-secured certificates. If you're an employer or individual looking to verify a certificate, no account is needed - just use our verification tools on the homepage.</p>
+            </div>
+          </div>
+          
+          <div class="accordion-item fade-in" style="animation-delay: 0.3s">
+            <button class="accordion-btn">
+              Can certificates be revoked or updated?
+              <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="accordion-content">
+              <p>While blockchain records are permanent, our system allows authorized institutions to issue status updates to certificates, including revocation notices. The original certificate remains on the blockchain with a linked status update, maintaining a complete and transparent history.</p>
+            </div>
+          </div>
+          
+          <div class="accordion-item fade-in" style="animation-delay: 0.4s">
+            <button class="accordion-btn">
+              Do you offer API access for large organizations?
+              <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="accordion-content">
+              <p>Yes, we provide robust API solutions for enterprise clients who need to integrate our certificate verification or issuance capabilities into their existing systems. Our API supports bulk operations and comes with comprehensive documentation and support.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-cta fade-in">
+          <p>Still have questions? We're here to help!</p>
+          <a href="#contact" class="btn-primary">Contact Us</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag fade-in">Contact Us</span>
+          <h2 class="fade-in">Get in Touch</h2>
+          <p class="fade-in">
+            Have questions about our certificate verification platform? We're here to help! Reach out to our team for assistance with implementation, pricing, or any other inquiries.
+          </p>
+        </div>
+
+        <div class="contact-info-grid">
+          <div class="contact-info-card fade-in">
+            <div class="contact-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <h3>Email</h3>
+            <p>info@ngcfo.com</p>
+          </div>
+
+          <div class="contact-info-card fade-in" style="animation-delay: 0.2s">
+            <div class="contact-icon">
+              <i class="fas fa-phone"></i>
+            </div>
+            <h3>Phone</h3>
+            <p>+123 456 7890</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-logo">
+            <div class="logo">
+              <img src="assets/logo.PNG" alt="ngCFO Logo" class="logo-img">
+              <span class="logo-text">ngcfo<span class="highlight">.COM</span></span>
+            </div>
+            <p>Secure certificate management with blockchain technology for unparalleled security and reliability.</p>
+          </div>
+          
+          <div class="footer-links">
+            <div class="footer-column">
+              <h3>Quick Links</h3>
+              <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="/blog">Blog</a></li>
+              </ul>
+            </div>
+            
+            <div class="footer-column">
+              <h3>Contact</h3>
+              <ul>
+                <li>Email: info@ngcfo.com</li>
+                <li>Phone: +123 456 7890</li>
+                <li>Address: 123 Blockchain Blvd, Digital City</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <div class="footer-bottom">
+          <p>Made with <span class="heart">♥</span> by Abdellatif Dafiaa, Imad Bouhssou, and Abdellah Elhasni</p>
+          <p class="copyright">&copy; <span id="current-year"></span> ngcfo.com. All rights reserved.</p>
+        </div>
+      </div>
+      
+      <a href="#home" class="scroll-top">
+        <i class="fas fa-arrow-up"></i>
+      </a>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

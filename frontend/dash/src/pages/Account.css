@@ -1,0 +1,64 @@
+.account-container {
+  background: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+.account-buttons {
+  margin-bottom: 20px;
+}
+
+.account-buttons button {
+  margin-right: 10px;
+  padding: 10px 16px;
+  border: 2px solid #4B256A;
+  border-radius: 5px;
+  background: none;
+  color: #4B256A;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.account-buttons button:hover {
+  background-color: #f3eafd;
+  color: #32194a;
+}
+
+.account-buttons .active-btn {
+  background-color: #4B256A !important;
+  color: #eee;
+  border: 2px solid #4B256A;
+}
+
+.account-section {
+  margin-top: 20px;
+}
+
+input[type='password'] {
+  margin-top: 10px;
+  display: block;
+  padding: 8px;
+  width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button.submit-btn {
+  margin-top: 10px;
+  background-color: #4B256A;
+  color: #bbb;
+  width: 160px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 10px 0;
+}
+
+button.submit-btn:hover {
+  background-color: #32194a;
+  color: #fff;
+} 

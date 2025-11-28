@@ -1,0 +1,143 @@
+.result-bg {
+  min-height: 100vh;
+  width: 100vw;
+  background: linear-gradient(135deg, #3C0061 0%, #2ec4b6 100%);
+  background-size: 400% 400%;
+  animation: gradientMove 10s ease-in-out infinite alternate;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+.result-container {
+  background: rgba(255,255,255,0.97);
+  border-radius: 18px;
+  box-shadow: 0 6px 32px rgba(60,0,97,0.13);
+  padding: 2.5rem 2.2rem;
+  max-width: 720px;
+  width: 95vw;
+  text-align: center;
+  color: #32194a;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.verification-details {
+  width: 100%;
+  margin: 1.5rem 0;
+  text-align: left;
+}
+
+.detail-item {
+  margin: 0.8rem 0;
+  padding: 0.8rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.detail-label {
+  font-weight: 600;
+  color: #3C0061;
+  font-size: 0.9rem;
+}
+
+.detail-value {
+  color: #2c3e50;
+  font-size: 1.1rem;
+  word-break: break-all;
+}
+
+.detail-value.hash {
+  font-family: monospace;
+  font-size: 0.9rem;
+  background: #e9ecef;
+  padding: 0.4rem;
+  border-radius: 4px;
+}
+
+.blockchain-details {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e9ecef;
+}
+
+.blockchain-details h3 {
+  color: #3C0061;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.download-btns {
+  display: flex;
+  gap: 1.2rem;
+  margin: 1.5rem 0;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.download-btn {
+  background: #3C0061;
+  color: #fff;
+  padding: 0.8rem 1.6rem;
+  border-radius: 7px;
+  border: none;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.download-btn:hover {
+  background: #2ec4b6;
+  transform: translateY(-2px);
+}
+
+.return-home-btn {
+  background: #b2f7cc;
+  color: #218c4a;
+  border: none;
+  border-radius: 8px;
+  padding: 0.8rem 2.2rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-top: 1rem;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(34,139,34,0.08);
+  transition: all 0.2s ease;
+}
+
+.return-home-btn:hover {
+  background: #2ec4b6;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.result-message {
+  font-size: 1.15rem;
+  margin: 1.5rem 0;
+  color: #e53935;
+}
+
+@media (max-width: 600px) {
+  .result-container {
+    padding: 1.5rem 1.2rem;
+  }
+  
+  .download-btns {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .download-btn {
+    width: 100%;
+  }
+} 

@@ -1,0 +1,244 @@
+.verify-container {
+  max-width: 900px;
+  margin: 48px auto 0 auto;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(80, 0, 120, 0.08);
+  padding: 36px 32px 40px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.verify-header {
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+.verify-header h2 {
+  color: #7c3aed;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.verify-header p {
+  color: #6b7280;
+  font-size: 1.1rem;
+}
+
+.verify-columns {
+  display: flex;
+  gap: 36px;
+  width: 100%;
+  justify-content: center;
+}
+
+.verify-column {
+  background: #faf8ff;
+  border-radius: 14px;
+  box-shadow: 0 2px 12px rgba(124, 58, 237, 0.06);
+  padding: 32px 24px 28px 24px;
+  flex: 1 1 320px;
+  min-width: 280px;
+  max-width: 380px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.verify-column h3 {
+  color: #7c3aed;
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+
+input[type="file"] {
+  margin-bottom: 10px;
+}
+
+input[type="text"], .id-input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 1rem;
+  margin-bottom: 12px;
+  background: #fff;
+  transition: border 0.2s;
+}
+
+input[type="text"]:focus, .id-input:focus {
+  border-color: #7c3aed;
+  outline: none;
+}
+
+.file-name {
+  color: #7c3aed;
+  font-size: 0.98rem;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.error-msg {
+  color: #f87171;
+  background: #fff0f0;
+  border-radius: 6px;
+  padding: 6px 12px;
+  margin-bottom: 8px;
+  font-size: 0.97rem;
+  font-weight: 500;
+}
+
+.verify-btn, .verify-button {
+  background: #7c3aed;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 22px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 6px;
+  transition: background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(124, 58, 237, 0.08);
+}
+
+.verify-btn:disabled, .verify-button:disabled {
+  background: #d1c4e9;
+  color: #fff;
+  cursor: not-allowed;
+}
+
+.verify-btn:hover:not(:disabled), .verify-button:hover:not(:disabled) {
+  background: #5b21b6;
+}
+
+@media (max-width: 900px) {
+  .verify-columns {
+    flex-direction: column;
+    gap: 24px;
+    align-items: stretch;
+  }
+  .verify-container {
+    padding: 18px 4vw 24px 4vw;
+  }
+}
+
+/* Verification Details Styles */
+.verification-details {
+  background: white;
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.detail-section {
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+.detail-section h3 {
+  color: #4B256A;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.detail-section p {
+  margin: 0.5rem 0;
+  color: #333;
+}
+
+.detail-section strong {
+  color: #4B256A;
+  margin-right: 0.5rem;
+}
+
+.download-section {
+  margin-top: 2rem;
+}
+
+.download-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.download-button {
+  background: #4B256A;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  flex: 1;
+  min-width: 200px;
+}
+
+.download-button:hover {
+  background: #3a1d4f;
+}
+
+.back-button {
+  background: #666;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 2rem;
+  width: 100%;
+}
+
+.back-button:hover {
+  background: #555;
+}
+
+/* Loading Overlay */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.loading-spinner {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #4B256A;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@media (max-width: 600px) {
+  .verify-container {
+    width: 95%;
+    padding: 0.5rem;
+  }
+
+  .verify-box {
+    padding: 1.5rem;
+  }
+
+  .verify-content {
+    gap: 1rem;
+  }
+} 

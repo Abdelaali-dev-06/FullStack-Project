@@ -1,0 +1,142 @@
+body {
+  background: url('./assets/pic7.png') ;
+  
+}
+
+.register-container {
+  max-width: 320px;
+  margin: 60px auto;
+  padding: 1.3rem 1.2rem 1.1rem 1.2rem;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 6px 32px rgba(80, 60, 120, 0.13);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.brand-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.2rem;
+}
+
+.home-button {
+  text-decoration: none;
+  color: #2ecc40;
+  background: #d4f8e8;
+  border-radius: 6px;
+  padding: 0.3rem 0.8rem;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-weight: 500;
+  transition: background 0.2s, color 0.2s;
+}
+.home-button:hover {
+  background: #b2f7cc;
+  color: #27ae60;
+}
+
+.brand-name {
+  font-size: 1.2rem;
+  color: #4B256A;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.highlight {
+  color: #a77cf4;
+}
+
+h1 {
+  text-align: center;
+  color: #4B256A;
+  margin-bottom: 0.8rem;
+  font-size: 1.3rem;
+}
+
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+label {
+  color: #6c47a6;
+  font-size: 0.98rem;
+  font-weight: 500;
+}
+
+input {
+  padding: 0.6rem 0.9rem;
+  border: 1.5px solid #e0d7f3;
+  border-radius: 7px;
+  font-size: 0.98rem;
+  background: #faf8fd !important;
+  transition: border 0.2s;
+  max-width: 100%;
+  box-sizing: border-box;
+  width: 100%;
+  display: block;
+  color: #222 !important;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:active {
+  -webkit-text-fill-color: #222 !important;
+  box-shadow: 0 0 0 1000px #faf8fd inset !important;
+  background-color: #faf8fd !important;
+  color: #222 !important;
+}
+
+input:focus {
+  outline: none;
+  border: 1.5px solid #a77cf4;
+  background: #fff;
+}
+
+button[type="submit"] {
+  margin-top: 0.5rem;
+  background: linear-gradient(90deg, #a77cf4 0%, #4B256A 100%);
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  padding: 0.7rem 0;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(167, 124, 244, 0.08);
+  transition: background 0.2s;
+}
+button[type="submit"]:hover {
+  background: linear-gradient(90deg, #4B256A 0%, #a77cf4 100%);
+}
+
+.links {
+  margin-top: 0.7rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.links a {
+  color: #6c47a6;
+  text-decoration: none;
+  font-size: 0.97rem;
+  transition: color 0.2s;
+}
+.links a:hover {
+  color: #a77cf4;
+} 
