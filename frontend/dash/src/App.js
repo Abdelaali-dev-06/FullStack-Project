@@ -5,7 +5,6 @@ import Account from './pages/Account';
 import Create from './pages/Create';
 import Verify from './pages/Verify';
 import Delete from './pages/Delete';
-import Chat from './pages/Chat';
 import UploadHistory from './pages/UploadHistory';
 import Support from './pages/Support';
 import Login from './pages/Login';
@@ -64,7 +63,6 @@ function DashboardLayout() {
           {activePage === 'verify-download' && <Verify />}
           {activePage === 'create' && <Create />}
           {activePage === 'delete' && <Delete />}
-          {activePage === 'chat' && <Chat />}
           {activePage === 'history' && <UploadHistory />}
           {activePage === 'support' && <Support />}
         </main>

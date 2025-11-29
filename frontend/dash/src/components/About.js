@@ -28,11 +28,6 @@ function About() {
                 <h3>Simple</h3>
                 <p>Easy-to-use interface for quick certificate management</p>
               </div>
-              <div className="about-feature">
-                <span className="feature-icon">🤖</span>
-                <h3>Smart</h3>
-                <p>AI-powered tools for instant access and verification</p>
-              </div>
             </div>
           </div>
         </div>

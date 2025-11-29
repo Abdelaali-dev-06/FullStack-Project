@@ -160,13 +160,6 @@ function Body() {
                   Verify certificates instantly with unique IDs
                 </p>
               </div>
-              <div className="feature-box">
-                <span className="feature-icon">🤖</span>
-                <h3 className="feature-title">AI Assistant</h3>
-                <p className="feature-description">
-                  Get instant answers about your certificates
-                </p>
-              </div>
             </div>
             <div className="key-image-below-grid">
               <img src={key} alt="Key Features" className="key-image large" />

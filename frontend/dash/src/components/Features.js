@@ -21,11 +21,6 @@ const Features = () => {
       description: "All certificates and related documents are authenticated using metadata stored on the blockchain—including cryptographic hashes—ensuring authenticity and preventing forgery."
     },
     {
-      icon: "🧠",
-      title: "AI-Powered Chat Assistant",
-      description: "Our integrated AI chat assistant allows users to instantly access certificate details. Ask questions about certificate holders, IDs, issuance dates, or verification status—your data is just a message away."
-    },
-    {
       icon: "📊",
       title: "Smart Management Dashboard",
       description: "Schools can issue certificates with ease, and employers can verify them in seconds. The intuitive dashboard is designed for simplicity, speed, and control."

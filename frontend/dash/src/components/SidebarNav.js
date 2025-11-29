@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaUser, FaPlus, FaCheckSquare, FaTrash, FaComments, FaChartBar, FaInfoCircle } from 'react-icons/fa';
+import { FaUser, FaPlus, FaCheckSquare, FaTrash, FaChartBar, FaInfoCircle } from 'react-icons/fa';
 import './SidebarNav.css';
 
 const navItems = [
@@ -7,7 +7,6 @@ const navItems = [
   { key: 'create', label: 'Create', icon: <FaPlus /> },
   { key: 'verify-download', label: 'Verify & Download', icon: <FaCheckSquare /> },
   { key: 'delete', label: 'Delete/Edit', icon: <FaTrash /> },
-  { key: 'chat', label: 'Chat with AI', icon: <FaComments /> },
   { key: 'history', label: 'Upload History', icon: <FaChartBar /> },
   { key: 'support', label: 'Support', icon: <FaInfoCircle /> },
 ];
