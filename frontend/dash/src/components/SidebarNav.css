@@ -2,10 +2,10 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  min-width: 200px;
+  min-width: 180px; 
   background: #fff;
   border-right: 1px solid #eee;
-  padding: 2rem 0.5rem;
+  padding: 1.5rem 0.5rem; 
   height: 100vh;
   position: sticky;
   top: 0;
@@ -13,30 +13,53 @@
 }
 
 .sidebar-nav-btn {
+  position: relative; 
   display: flex;
   align-items: center;
   gap: 0.8rem;
   background: none;
   border: none;
-  color: #222;
+  color: #222; 
   font-size: 1.1rem;
   font-weight: 500;
   padding: 0.7rem 1.2rem;
-  border-radius: 8px;
+  border-radius: 10px; 
   cursor: pointer;
-  transition: background 0.2s, color 0.2s;
+  transition: background 0.2s, color 0.2s, transform 0.1s, box-shadow 0.1s; 
 }
 
-.sidebar-nav-btn.active, .sidebar-nav-btn:active {
-  background: #f5f5f5;
-  color: #a77cf4;
+.sidebar-nav-btn:hover {
+  background: #2ec4b6; 
+  color: #000000; 
+}
+
+.sidebar-nav-btn.active, 
+.sidebar-nav-btn:active {
+  background: #2ec4b6; 
+  color: #000000; 
+  font-weight: 600;
+  
+  transform: translate(1px, 1px); 
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15); 
+}
+
+.sidebar-nav-btn.active::before,
+.sidebar-nav-btn:active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 15%; 
+  height: 70%; 
+  width: 4px;
+  background-color: #2ec4b6; 
+  border-radius: 0 4px 4px 0; 
 }
 
 .sidebar-nav-btn.sub-item {
   margin-left: 1.2rem;
   font-size: 1.1rem;
   font-weight: 500;
-  color: #222;
+  color: #000000;
   background: none;
   display: flex;
   align-items: center;
@@ -44,41 +67,24 @@
 
 .sidebar-icon {
   font-size: 1.3rem;
-  min-width: 24px;
+  min-width: 25px;
+  text-align: center;
+}
+
+.toggle-icon {
+  font-size: 1.2rem;
+  margin-left: auto;
+  transition: transform 0.2s;
+}
+
+.toggle-icon.open {
+  transform: rotate(90deg);
+}
+
+.sub-nav-links {
   display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.sidebar-label {
-  display: inline-block;
-}
-
-.sidebar-nav.mobile-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: #fff;
-  z-index: 9999;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 1.5rem;
-  box-shadow: 0 0 0 100vw rgba(0,0,0,0.15);
-  display: none;
-  transition: opacity 0.2s;
+  padding-left: 0;
+  list-style: none;
+  margin: 0.3rem 0;
 }
-.sidebar-nav.mobile-overlay.open {
-  display: flex;
-}
-
-@media (max-width: 600px) {
-  .sidebar-nav {
-    display: none;
-  }
-  .sidebar-nav.open.mobile-overlay {
-    display: flex;
-  }
-} 

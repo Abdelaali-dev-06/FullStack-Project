@@ -1,68 +1,102 @@
+/* --- Root Styles (Background Image) --- */
 body {
-  background: url('./assets/pic7.png') ;
-  
+  background: url('./assets/pic7.png') no-repeat center center fixed;
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+  background-color: #0A192F; 
+  min-height: 100vh;
 }
 
+/* --- Register Box Container: WIDER & CENTERED --- */
 .register-container {
-  max-width: 320px;
-  margin: 60px auto;
-  padding: 1.3rem 1.2rem 1.1rem 1.2rem;
-  background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 6px 32px rgba(80, 60, 120, 0.13);
+  /* Center the box on the screen */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  max-width: 400px; 
+  width: 90%;
+  
+  padding: 2.5rem; 
+  
+  /* White Transparent/Light Glass Effect */
+  background: rgba(255, 255, 255, 0.2); 
+  backdrop-filter: blur(10px); 
+  -webkit-backdrop-filter: blur(10px); 
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.4); 
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3); 
+  
   display: flex;
   flex-direction: column;
   align-items: center;
+  box-sizing: border-box;
 }
+
+/* 💡 CRITICAL FIX: Default text inside the container must be WHITE for visibility */
+.register-container, 
+.register-container * {
+    color: #FFFFFF; 
+}
+
 
 .brand-header {
   display: flex;
   align-items: center;
   gap: 1rem;
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.5rem; 
+  width: 100%;
+  justify-content: space-between;
 }
 
+/* Home Button - KEPT ORIGINAL COLORS */
 .home-button {
   text-decoration: none;
-  color: #2ecc40;
-  background: #d4f8e8;
+  color: #1a3a60; 
+  background: rgba(255, 255, 255, 0.7); 
+  border: 1px solid #1a3a60; 
   border-radius: 6px;
   padding: 0.3rem 0.8rem;
-  font-size: 1.1rem;
+  font-size: 1rem;
   display: flex;
   align-items: center;
   gap: 0.3rem;
   font-weight: 500;
-  transition: background 0.2s, color 0.2s;
+  transition: all 0.2s;
 }
+
 .home-button:hover {
-  background: #b2f7cc;
-  color: #27ae60;
-}
-
-.brand-name {
-  font-size: 1.2rem;
-  color: #4B256A;
-  font-weight: 700;
-  letter-spacing: 1px;
-}
-
-.highlight {
-  color: #a77cf4;
+  background: #1a3a60; 
+  color: #fff; 
 }
 
 h1 {
-  text-align: center;
-  color: #4B256A;
-  margin-bottom: 0.8rem;
-  font-size: 1.3rem;
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #00FFFF; /* Bright Aqua title */
+  margin-top: 0;
+  margin-bottom: 0.5rem;
 }
 
-form {
+.brand-name {
+  font-size: 1.5rem;
+  color: #FFFFFF; 
+  font-weight: 700;
+}
+.brand-name .highlight {
+  color: #00FFFF; /* Primary Aqua highlight */
+  font-weight: 900;
+}
+
+
+/* --- Form Styles --- */
+.form-section {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
+  gap: 0.8rem; 
 }
 
 .form-group {
@@ -72,71 +106,85 @@ form {
 }
 
 label {
-  color: #6c47a6;
-  font-size: 0.98rem;
-  font-weight: 500;
+  /* 💡 CRITICAL FIX: Explicitly setting label text to WHITE */
+  color: #FFFFFF !important; 
+  font-size: 0.95rem; 
+  font-weight: 600; 
+  margin-bottom: 0.4rem;
 }
 
 input {
-  padding: 0.6rem 0.9rem;
-  border: 1.5px solid #e0d7f3;
+  /* Input text must be BLACK */
+  color: #000000 !important; 
+  
+  padding: 0.8rem 1rem; 
+  border: 1px solid rgba(0, 0, 0, 0.1); 
   border-radius: 7px;
-  font-size: 0.98rem;
-  background: #faf8fd !important;
+  font-size: 1rem; 
+  background: #fff !important; 
   transition: border 0.2s;
   max-width: 100%;
   box-sizing: border-box;
   width: 100%;
   display: block;
-  color: #222 !important;
 }
 
-input:-webkit-autofill,
-input:-webkit-autofill:focus,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:active {
-  -webkit-text-fill-color: #222 !important;
-  box-shadow: 0 0 0 1000px #faf8fd inset !important;
-  background-color: #faf8fd !important;
-  color: #222 !important;
+/* --- Placeholder Styling --- */
+input::placeholder {
+  color: #999999; 
+  opacity: 1; 
+  font-style: italic;
 }
 
 input:focus {
   outline: none;
-  border: 1.5px solid #a77cf4;
+  border: 1.5px solid #00FFFF; 
   background: #fff;
 }
 
+/* --- Submit Button (Primary Accent) --- */
 button[type="submit"] {
-  margin-top: 0.5rem;
-  background: linear-gradient(90deg, #a77cf4 0%, #4B256A 100%);
-  color: #fff;
+  width: 100%;
+  margin-top: 1.5rem; 
+  background: #00FFFF;
+  color: #000000; /* Black text on bright color */
   border: none;
   border-radius: 7px;
-  font-size: 1.05rem;
-  font-weight: 600;
-  padding: 0.7rem 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  padding: 0.8rem 0;
   cursor: pointer;
-  box-shadow: 0 2px 8px rgba(167, 124, 244, 0.08);
-  transition: background 0.2s;
+  box-shadow: 0 4px 15px rgba(0, 255, 255, 0.6);
+  transition: all 0.2s;
 }
 button[type="submit"]:hover {
-  background: linear-gradient(90deg, #4B256A 0%, #a77cf4 100%);
+  background: #00CCFF; 
+  box-shadow: 0 6px 20px rgba(0, 255, 255, 0.8);
 }
 
+/* --- Links (Already have an account?) --- */
 .links {
-  margin-top: 0.7rem;
+  width: 100%;
+  margin-top: 1rem;
+  font-size: 0.9rem;
   text-align: center;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
 }
+
 .links a {
-  color: #6c47a6;
+  color: #00FFFF; /* Aqua link text */
   text-decoration: none;
-  font-size: 0.97rem;
   transition: color 0.2s;
+  font-weight: 600;
 }
+
 .links a:hover {
-  color: #a77cf4;
-} 
+  color: #FFFFFF; /* White hover */
+  text-decoration: underline;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 450px) {
+  .register-container {
+    padding: 1.5rem;
+  }
+}

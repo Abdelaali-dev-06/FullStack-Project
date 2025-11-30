@@ -14,7 +14,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #2ec4b6;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -57,8 +57,8 @@
   width: 20%;
   min-width: 180px;
   max-width: 260px;
-  background: #fff;
-  border-right: 1px solid #eee;
+  background: #FFFAFA;
+  border-right: 1px solid #FFFAFA;
   padding: 2rem 0.5rem;
   display: flex;
   flex-direction: column;
@@ -88,7 +88,7 @@
   cursor: pointer;
   border-radius: 5px;
   transition: background-color 0.2s;
-  color: #666;
+  color: #504b4b;
 }
 
 .sidebar-nav-btn:hover {
@@ -96,7 +96,7 @@
 }
 
 .sidebar-nav-btn.active {
-  background: #4B256A;
+  background: linear-gradient(2deg, #000000 0%,#2ec4b6 100%);
   color: white;
 }
 

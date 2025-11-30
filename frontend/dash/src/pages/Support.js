@@ -6,7 +6,7 @@ const Support = () => (
     <div className="support-option">
       <img src="/icons/email.png" alt="Email Icon" className="support-icon" />
       <div className="support-title">Email Support</div>
-      <div className="support-subtitle">support@ngcfo.com</div>
+      <div className="support-subtitle">support@certa.com</div>
     </div>
     <div className="support-divider" />
     <div className="support-option">

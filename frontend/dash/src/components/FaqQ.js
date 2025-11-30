@@ -7,7 +7,7 @@ import HomeFooter from './HomeFooter';
 const FaqQ = () => {
   const faqs = [
     {
-      question: "How does NGCFO ensure the authenticity of certificates?",
+      question: "How does CERTA ensure the authenticity of certificates?",
       answer: "We use blockchain technology to store cryptographic hashes and metadata for every certificate. This ensures that each document is tamper-proof and can be independently verified for authenticity at any time."
     },
     {
@@ -16,7 +16,7 @@ const FaqQ = () => {
     },
     {
       question: "What if a certificate is lost or deleted?",
-      answer: "No worries. All certificates are securely stored in the cloud with backup systems in place. You can retrieve them anytime through your dashboard using the unique certificate ID or by interacting with our AI assistant."
+      answer: "No worries. All certificates are securely stored in the cloud with backup systems in place. You can retrieve them anytime through your dashboard using the unique certificate ID."
     }
   ];
 

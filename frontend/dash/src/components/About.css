@@ -1,6 +1,7 @@
 .about-root {
   min-height: 100vh;
-  background: linear-gradient(135deg, #3C0061 0%, #2ec4b6 100%);
+  /* Retaining the established Dark Violet (#3C0061) to Accent Green (#2ec4b6) gradient */
+  background: linear-gradient(135deg, #2ec4b6 0%, #000000 40%, #000000 50%, #000000 60%,#2ec4b6 100%);
   padding: 2rem 1rem;
   color: white;
   padding-top: 120px;
@@ -17,15 +18,15 @@
   font-weight: 900;
   text-align: center;
   margin-bottom: 2rem;
-  color: #ff9800;
+  color: #2ec4b6; 
 }
 
 .about-content {
-  background: rgba(255, 255, 255, 0.1);
+  background: #181818;
   backdrop-filter: blur(10px);
   border-radius: 20px;
   padding: 2.5rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 20px 20px 45px rgba(0, 0, 0, 0.4);
 }
 
 .about-main-text {
@@ -52,7 +53,7 @@
 }
 
 .about-feature {
-  background: rgba(255, 255, 255, 0.05);
+  background: white;
   padding: 2rem;
   border-radius: 15px;
   text-align: center;
@@ -73,13 +74,14 @@
   font-size: 1.3rem;
   font-weight: 700;
   margin-bottom: 1rem;
-  color: #ff9800;
+  /* UPDATED: Changed from orange to Accent Green (#2ec4b6) */
+  color: rgb(46, 196, 182);
 }
 
 .about-feature p {
   font-size: 1rem;
   line-height: 1.5;
-  color: rgba(255, 255, 255, 0.9);
+  color: black;
 }
 
 @media (max-width: 768px) {

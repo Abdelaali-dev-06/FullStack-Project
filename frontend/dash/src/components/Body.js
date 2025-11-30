@@ -27,18 +27,25 @@ function Body() {
       return;
     }
     const formData = new FormData();
-    formData.append('pdf_file', pdfFile);
+    formData.append('file', pdfFile);
     try {
       const res = await fetch('http://localhost:8000/api/public/verify/pdf', {
         method: 'POST',
         body: formData,
       });
       const data = await res.json();
+      
+      // Case 2 (res3): Inactive or Deleted - ROBUST MESSAGE CHECK (for PDF endpoint)
+      if (data && data.message && (data.message.toLowerCase().includes('not active') || data.message.toLowerCase().includes('inactive'))) {
+        navigate('/res3', { state: data });
+        return; 
+      }
+
+      // Case 1 (res1): Success and Active
       if (res.ok && data && data.message && data.message.toLowerCase().includes('active')) {
         navigate('/res1', { state: data });
-      } else if (data && data.message && data.message.toLowerCase().includes('not active')) {
-        navigate('/res3', { state: data });
       } else {
+        // Case 3 (alert): Non-existent/General Failure
         alert(data.message || 'Verification failed.');
       }
     } catch (err) {
@@ -59,20 +66,26 @@ function Body() {
       const res = await fetch(`http://localhost:8000/api/public/verify/${encodeURIComponent(idInput.trim())}`);
       const data = await res.json();
       
+      // Case 3 (404): Non-existent (specific 404 alert)
       if (res.status === 404) {
         alert('Certificate ID not found in our system.');
         return;
       }
       
-      if (res.ok && data && data.message) {
-        if (data.message.toLowerCase().includes('active')) {
-          navigate('/res2', { state: data });
-        } else if (data.message.toLowerCase().includes('not active')) {
-          navigate('/res3', { state: data });
-        } else {
-          alert(data.message || 'Verification failed.');
-        }
+      // Case 2 (res3): Inactive or Deleted - Checking the explicit status field
+      if (data && data.status && data.status.toLowerCase() === 'inactive') {
+        navigate('/res3', { state: data });
+        return; 
+      }
+
+      // Case 1 (res2): Success and Active - Checking the explicit status field
+      if (res.ok && data && data.status && data.status.toLowerCase() === 'active') { 
+        navigate('/res2', { state: data });
+      } else if (res.ok && data) {
+         // Fallback for successful fetch but missing status (should now be covered by 404/status checks)
+         navigate('/res2', { state: data });
       } else {
+        // Case 3 (alert): Non-existent (general alert or fallback)
         alert(data.message || 'Verification failed.');
       }
     } catch (err) {
@@ -86,10 +99,10 @@ function Body() {
       <div className="main-content">
         <section className="hero-section">
           <div className="hero-content">
-            <h1 className="hero-title-left">Secure Certificate Authentication, Management and Storage with Blockchain Technology and Integrated AI</h1>
+            <h1 className="hero-title-left">Secure Certificate Authentication, Management and Storage with Blockchain Technology </h1>
             <p className="hero-subtitle">
               Verify, store, and manage certificates with unparalleled security and ease.
-              Powered by blockchain and AI technology.
+              Powered by blockchain.
             </p>
             <div className="verification-container">
               <div className="verification-card">
@@ -131,7 +144,7 @@ function Body() {
                   rel="noopener noreferrer"
                   className="youtube-tutorial-btn"
                 >
-                  <span className="play-icon">▶️</span> Watch our small tutorial on YouTube
+                  <span className="red-play-icon">▶</span> Watch our small tutorial on YouTube
                 </a>
               </div>
             </div>
@@ -160,19 +173,27 @@ function Body() {
                   Verify certificates instantly with unique IDs
                 </p>
               </div>
+              <div className="feature-box">
+                <span className="feature-icon">🤖</span>
+                <h3 className="feature-title">AI Assistant</h3>
+                <p className="feature-description">
+                  Get instant answers about your certificates
+                </p>
+                <h4>Soon...!</h4>
+              </div>
             </div>
             <div className="key-image-below-grid">
               <img src={key} alt="Key Features" className="key-image large" />
             </div>
             <div className="features-content">
-              <h3>Why Choose Our Platform?</h3>
-              <p>Our platform combines cutting-edge blockchain technology with advanced AI to provide the most secure and efficient certificate management system available. With features like instant verification, secure storage, and AI-powered assistance, we ensure your certificates are always protected and easily accessible.</p>
+              <h3 >Why Choose Our Platform?</h3>
+              <p>Our platform conatain cutting-edge blockchain technology to provide the most secure and efficient certificate management system available. With features like instant verification, secure storage, and AI-powered assistance (Soon..!), we ensure your certificates are always protected and easily accessible.</p>
               <ul>
-                <li>Blockchain-powered security</li>
-                <li>Instant verification system</li>
-                <li>AI-powered assistance</li>
-                <li>User-friendly interface</li>
-                <li>24/7 support available</li>
+                <li>✅Blockchain-powered security</li>
+                <li>✅Instant verification system</li>
+                <li>✅User-friendly interface</li>
+                <li>✅24/7 support available</li>
+                <li>⌛AI-powered assistance. *Soon..!*</li>
               </ul>
             </div>
           </div>

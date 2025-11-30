@@ -42,7 +42,7 @@ function Verify() {
     setIsLoading(true);
     try {
       const formData = new FormData();
-      formData.append('pdf_file', file);
+      formData.append('file', file);
 
       // Log the request details
       console.log('Sending PDF verification request:', {

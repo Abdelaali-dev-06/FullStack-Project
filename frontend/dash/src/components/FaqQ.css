@@ -1,6 +1,7 @@
 .faq-root {
   min-height: 100vh;
-  background: linear-gradient(135deg, #3C0061 0%, #2ec4b6 100%);
+  /* Background gradient is already using our dark theme colors */
+  background: linear-gradient(135deg, #2ec4b6 0%, #000000 40%, #000000 50%, #000000 60%,#2ec4b6 100%);
   padding: 2rem 1rem;
   color: white;
   padding-top: 120px;
@@ -22,7 +23,8 @@
   font-weight: 900;
   text-align: center;
   margin-bottom: 1rem;
-  color: #ff9800;
+  /* UPDATED: Changed from orange to Accent Green */
+  color: #2ec4b6;
 }
 
 .faq-subtitle {
@@ -37,7 +39,7 @@
 }
 
 .faq-content {
-  background: rgba(255, 255, 255, 0.1);
+  background: #181818;
   backdrop-filter: blur(10px);
   border-radius: 20px;
   padding: 2.5rem;
@@ -57,7 +59,7 @@
 }
 
 .faq-box {
-  background: rgba(255, 255, 255, 0.05);
+  background: white ;
   border-radius: 15px;
   padding: 2rem;
   text-align: left;
@@ -68,20 +70,22 @@
 
 .faq-box:hover {
   transform: translateY(-5px);
-  background: rgba(255, 255, 255, 0.1);
+  /* Slightly more transparent white on hover */
+  background: whitesmoke; 
 }
 
 .faq-question {
   font-size: 1.3rem;
   font-weight: 700;
   margin-bottom: 1rem;
-  color: #ff9800;
+  /* UPDATED: Changed from orange to Accent Green */
+  color: #2ec4b6;
 }
 
 .faq-answer {
   font-size: 1rem;
   line-height: 1.5;
-  color: rgba(255, 255, 255, 0.9);
+  color: black;
   margin: 0;
 }
 
@@ -104,19 +108,23 @@
   min-width: 200px;
 }
 
+/* UPDATED: Blog button uses a smooth green gradient */
 .blog-button {
-  background: linear-gradient(90deg, #a393fa 0%, #2ec4b6 100%);
+  background: linear-gradient(90deg, #2ec4b6 0%, #0ee623 100%);
   color: white;
+  border: none;
 }
 
+/* UPDATED: Contact button is now an outlined style using Accent Green */
 .contact-button {
-  background: #3C0061;
-  color: white;
+  background: transparent;
+  color: #2ec4b6; /* Accent Green text */
+  border: 2px solid #2ec4b6; /* Accent Green border */
 }
 
 .faq-button:hover {
   transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  box-shadow: 0 5px 15px rgba(46, 196, 182, 0.3); /* Green shadow on hover */
 }
 
 @media (max-width: 768px) {
@@ -142,11 +150,13 @@
   
   .faq-actions {
     flex-direction: column;
-    gap: 1rem;
+    gap: 1.5rem;
   }
   
   .faq-button {
-    width: 100%;
-    text-align: center;
+    width: 76%; 
+    max-width: 300px; 
+    min-width: 0; 
+    margin: 0 auto;
   }
 } 

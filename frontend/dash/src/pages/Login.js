@@ -32,7 +32,7 @@ const Login = () => {
         console.log('Stored token:', localStorage.getItem('token'));
         console.log('Stored school_id:', localStorage.getItem('school_id'));
         
-        alert('Login successful! Redirecting to dashboard...');
+        // alert('Login successful! Redirecting to dashboard...');
         navigate('/dash');
       } else if (data.message) {
         alert(data.message);
@@ -51,13 +51,14 @@ const Login = () => {
         <Link to="/" className="home-button">
           <i className="fas fa-home"></i> Home
         </Link>
-        <h2 className="brand-name">NGCFO<span className="highlight">.COM</span></h2>
+        <h2 className="brand-name">Certa<span className="highlight">.Com</span></h2>
       </div>
       <h1>Login</h1>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="email">Email</label>
           <input
+            placeholder='email'
             type="email"
             id="email"
             value={email}
@@ -68,6 +69,7 @@ const Login = () => {
         <div className="form-group">
           <label htmlFor="password">Password</label>
           <input
+            placeholder='Password'
             type="password"
             id="password"
             value={password}
@@ -85,4 +87,4 @@ const Login = () => {
   );
 };
 
-export default Login; 
+export default Login;

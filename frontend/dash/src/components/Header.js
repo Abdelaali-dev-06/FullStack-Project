@@ -33,7 +33,7 @@ const Header = ({ isMobile, navOpen, setNavOpen }) => {
 
   return (
     <header className="dashboard-header">
-      <div className="brand">NGCFO.com</div>
+      <div className="brand">CERTA.com</div>
       {isMobile && (
         <button className="header-hamburger" onClick={() => setNavOpen(!navOpen)}>
           <FaBars size={26} />

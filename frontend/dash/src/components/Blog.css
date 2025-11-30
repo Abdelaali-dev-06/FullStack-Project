@@ -1,12 +1,23 @@
+/* CRITICAL FIX: Applies Flexbox to the entire page body */
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensures the page takes full viewport height */
+  font-family: 'Inter', sans-serif;
+}
+
 .blog-root {
-  max-width: 700px;
-  margin: 3.5rem auto 0 auto;
-  padding: 1.5rem;
-  background: none;
+  min-height: 100vh;
+  /* Retaining the established Dark Violet (#3C0061) to Accent Green (#2ec4b6) gradient */
+  background: linear-gradient(135deg, #2ec4b6 0%, #000000 40%, #000000 50%, #000000 60%,#2ec4b6 100%);
+  padding: 2rem 1rem;
+  color: white;
+  padding-top: 120px;
 }
 
 .blog-title {
-  color: #a393fa;
+  color: #2ec4b6; /* Accent Green */
   font-size: 2.3rem;
   font-weight: 900;
   text-align: center;
@@ -14,19 +25,39 @@
 }
 
 .blog-desc {
-  color: #3d2c5a;
+  /* Box Sizing for Paragraphs: Use a distinct class for the paragraph box */
+  max-width: 600px;
+  margin: 0 auto 2.2rem auto; /* Centers the paragraph beneath the title */
+  color: white; 
   font-size: 1.18rem;
   text-align: center;
-  margin-bottom: 2.2rem;
-  line-height: 1.6;
+  line-height: 3.0;
 }
+
+.blog-icon {
+  font-size: 2.5rem; /* Large icon size */
+  color: #0ee623; /* Vibrant Green for the icon */
+  margin-bottom: 0.8rem;
+  display: block; 
+}
+
+.blog-new-desc {
+  /* Box Sizing for Paragraphs: Use a distinct class for the paragraph box */
+  max-width: 600px;
+  margin: 0 auto 2.2rem auto; /* Centers the paragraph beneath the title */
+  color: gold; 
+  font-size: 1.18rem;
+  text-align: center;
+  line-height: 3.0;
+}
+
 
 @media (max-width: 600px) {
   .blog-root {
     padding: 0.5rem;
   }
   .blog-title {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
   }
   .blog-desc {
     font-size: 1rem;

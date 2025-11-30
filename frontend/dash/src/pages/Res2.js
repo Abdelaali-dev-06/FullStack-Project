@@ -7,9 +7,29 @@ const Res2 = () => {
   const navigate = useNavigate();
   const data = location.state || {};
 
+  const { file_type, file_id, message, download_links, blockchain_data, status } = data;
+
+  const blockchainRecord = blockchain_data 
+    ? (Array.isArray(blockchain_data) ? blockchain_data[0] : blockchain_data) 
+    : null;
+
+  const effectiveFileId = file_id || 'N/A';
+  const effectiveFileType = file_type || 'N/A'; 
+  const effectiveStatus = status || 'Active';
+
   const handleDownload = async (type) => {
-    const url = data.download_links?.[type];
-    if (!url) return;
+    const url = download_links?.[type];
+    
+    if (url && url.startsWith('/download/')) {
+        console.error(`ERROR: The download feature is currently disabled. The actual Laravel route for the ${type} file is missing.`);
+        alert("Download feature currently unavailable. The file is verified, but download routes are still under construction.");
+        return;
+    }
+    
+    if (!url) {
+        console.error('Download link not found.');
+        return;
+    }
 
     try {
       const response = await fetch(url, {
@@ -23,11 +43,10 @@ const Res2 = () => {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
-      // Get the filename from the Content-Disposition header if available
       const contentDisposition = response.headers.get('Content-Disposition');
       let filename = `certificate_${type}.pdf`;
       if (contentDisposition) {
-        const filenameMatch = contentDisposition.match(/filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/);
+        const filenameMatch = contentDisposition.match(/filename[^;=\n]*=((['\"]).*?\2|[^;\n]*)/);
         if (filenameMatch && filenameMatch[1]) {
           filename = filenameMatch[1].replace(/['"]/g, '');
         }
@@ -37,66 +56,106 @@ const Res2 = () => {
       const downloadUrl = window.URL.createObjectURL(blob);
       const link = document.createElement('a');
       link.href = downloadUrl;
-      link.download = filename;
+      link.setAttribute('download', filename);
       document.body.appendChild(link);
       link.click();
-      document.body.removeChild(link);
+      link.remove();
       window.URL.revokeObjectURL(downloadUrl);
+
     } catch (error) {
-      console.error('Download error:', error);
-      alert('Failed to download the file. Please try again.');
+      console.error('Download failed:', error);
+      alert('Download failed: The file could not be accessed. (Server Error)');
     }
   };
 
   return (
     <div className="result-bg">
       <div className="result-container">
-        <h2>ID Verified Successfully!</h2>
+        <h2>ID Verification Successful !!</h2>
         
         <div className="verification-details">
-          <div className="detail-item">
-            <span className="detail-label">File ID:</span>
-            <span className="detail-value">{data.file_id}</span>
+
+          <div className="res-primary-info">
+            <h3>Document Information</h3>
+            
+            {/* File Type */}
+            <div className="res1-detail-item">
+              <span className="detail-label">File Type:</span>
+              <span className="detail-value">{effectiveFileType}</span>
+            </div>
+            
+            {/* File ID */}
+            <div className="res1-detail-item">
+              <span className="detail-label">File ID:</span>
+              <span className="detail-value">{effectiveFileId}</span>
+            </div>
+
+            {/* Status (NEW FIELD) */}
+            <div className="res1-detail-item">
+              <span className="detail-label">Status:</span>
+              <span className="detail-value" style={{fontWeight: 700, color: '#218c4a'}}>{effectiveStatus}</span>
+            </div>
+           
           </div>
-          
-          {data.blockchain_data?.[0] && (
-            <div className="blockchain-details">
-              <h3>Blockchain Information</h3>
-              <div className="detail-item">
+
+          {blockchainRecord ? (
+            <div className="res1-secondary-info">
+              <h3>Blockchain Data</h3>
+
+              <div className="res1-detail-item">
                 <span className="detail-label">Operation ID:</span>
-                <span className="detail-value">{data.blockchain_data[0].operation_id}</span>
+                <span className="detail-value">{blockchainRecord.operation_id}</span>
               </div>
-              <div className="detail-item">
+              
+              <div className="res1-detail-item">
                 <span className="detail-label">School ID:</span>
-                <span className="detail-value">{data.blockchain_data[0].school_id}</span>
+                <span className="detail-value">{blockchainRecord.school_id}</span>
               </div>
-              <div className="detail-item">
+
+              <div className="res1-detail-item">
+                <span className="detail-label">File ID:</span>
+                <span className="detail-value">{blockchainRecord.file_id}</span>
+              </div>
+              
+              <div className="res1-detail-item">
                 <span className="detail-label">Original Hash:</span>
-                <span className="detail-value hash">{data.blockchain_data[0].original_hash}</span>
+                <span className="detail-value hash">{blockchainRecord.original_hash}</span>
               </div>
-              <div className="detail-item">
-                <span className="detail-label">Updated Hash:</span>
-                <span className="detail-value hash">{data.blockchain_data[0].updated_hash}</span>
+              
+              {/* Processed/Updated Hash (CRITICAL DATA) */}
+              <div className="res1-detail-item">
+                <span className="detail-label">Processed Hash:</span>
+                <span className="detail-value hash">{blockchainRecord.processed_hash || blockchainRecord.updated_hash}</span>
               </div>
             </div>
+          ) : (
+             <div className="res1-secondary-info">
+                <h3>Blockchain Data</h3>
+                <div className="res1-detail-item">
+                    <span className="detail-label">Status:</span>
+                    <span className="detail-value" style={{color: '#b71c1c'}}>Not Available</span>
+                </div>
+            </div>
           )}
+          {/* --- END BOX 2 --- */}
         </div>
 
-        <div className="download-btns">
-          <button 
-            className="download-btn"
-            onClick={() => handleDownload('original')}
-          >
-            Download Original
-          </button>
-          <button 
-            className="download-btn"
-            onClick={() => handleDownload('updated')}
-          >
-            Download Updated
-          </button>
-        </div>
-
+        {/* Download Buttons: Render if original or updated links are present */}
+        {(download_links && (download_links.original || download_links.updated)) && (
+          <div className="download-btns">
+            {download_links.original && (
+              <button className="download-btn" onClick={() => handleDownload('original')}>
+                Download Original
+              </button>
+            )}
+            {download_links.updated && (
+              <button className="download-btn" onClick={() => handleDownload('updated')}>
+                Download Updated
+              </button>
+            )}
+          </div>
+        )}
+        
         <button className="return-home-btn" onClick={() => navigate('/')}>
           Return Home
         </button>
@@ -105,4 +164,4 @@ const Res2 = () => {
   );
 };
 
-export default Res2; 
+export default Res2;

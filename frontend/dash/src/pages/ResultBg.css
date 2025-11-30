@@ -1,143 +1,243 @@
-.result-bg {
-  min-height: 100vh;
-  width: 100vw;
-  background: linear-gradient(135deg, #3C0061 0%, #2ec4b6 100%);
-  background-size: 400% 400%;
-  animation: gradientMove 10s ease-in-out infinite alternate;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
+/* -------------------------------------------------------------------------- */
+/* Common Styles (from previous response)                   */
+/* -------------------------------------------------------------------------- */
 @keyframes gradientMove {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 100% 50%; }
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
+    }
+    .result-bg {
+      min-height: 100vh;
+      width: 100vw;
+      background: linear-gradient(135deg, #000000 0%, #2ec4b6 100%);
+      background-size: 400% 400%;
+      animation: gradientMove 10s ease-in-out infinite alternate;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 0;
+      font-family: 'Inter', sans-serif;
+    }
+    .result-container {
+      background: rgba(255,255,255,0.97);
+      border-radius: 18px;
+      box-shadow: 0 6px 32px rgba(60,0,97,0.13);
+      padding: 2.5rem 2.2rem;
+      max-width: 720px;
+      width: 95vw;
+      text-align: center;
+      color: #218c4a;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .result-container h2 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #000000;
+    }
+
+    .verification-details {
+      width: 100%;
+      margin: 1.5rem 0;
+      text-align: left;
+    }
+    
+    /* Styles for Res2 only (for context, assuming they exist) */
+    .detail-item {
+      margin: 0.8rem 0;
+      padding: 0.8rem;
+      border-bottom: 1px solid #e9ecef;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .detail-label {
+      font-weight: 500;
+      color: #7f8c8d;
+      font-size: 0.9rem;
+    }
+    .detail-value {
+      color: #2c3e50;
+      font-size: 1.1rem;
+      word-break: break-all;
+    }
+.detail-value.hash {
+  /* Inherited from common styles, updating look */
+  font-family: monospace;
+  font-size: 0.95rem; /* Slightly larger/more readable */
+  background: #d4f7f2; /* Light accent background */
+  color: #000; /* Dark text for contrast */
+  padding: 0.5rem 0.8rem;
+  border-radius: 6px;
+  max-width: 65%; /* Constrain hash size slightly */
+  overflow: hidden;
+  text-overflow: ellipsis; /* Use ellipsis if too long (optional, break-all usually works) */
+  word-break: break-all;
+  text-align: right; /* Align hash text to the right side of its container */
+}
+    .blockchain-details {
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #e9ecef;
+    }
+    .blockchain-details h3 {
+      color: #b2f7cc;
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+    }
+
+    /* Styles for Res1 only (newly added/updated) */
+    .res1-detail-item {
+      margin: 0.8rem 0;
+      padding: 0.8rem;
+      border-bottom: 1px solid #e9ecef;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .res1-blockchain-details {
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #e9ecef;
+    }
+    .res1-blockchain-details h3 {
+      color: #2ec4b6; /* Use the main brand color for the section header */
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+    .res-primary-info {
+  margin-bottom: 2rem;
+  padding: 1.5rem 1rem;
+  border: 1px solid #2ec4b6; /* Accent Green Border */
+  border-radius: 10px;
+  background: #f0fff0; /* Very light pale green background */
+}
+.res1-secondary-info {
+  margin-top: 1rem; /* Space between the two boxes */
+  padding: 1.5rem;
+  border-radius: 12px;
+  background-color: #f0fff0; /* Lightest pale green background */
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.05); /* Very subtle shadow */
+  width: 100%;
+}
+.res1-secondary-info h3 {
+  /* Match the heading style of the top box */
+  color: #2ec4b6;
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #e0e0e0;
 }
 
-.result-container {
-  background: rgba(255,255,255,0.97);
+    /* Common Buttons */
+    .download-btns {
+      display: flex;
+      gap: 1.2rem;
+      margin: 1.5rem 0;
+      flex-wrap: wrap;
+      justify-content: center;
+      width: 100%;
+    }
+    .download-btn {
+      background: #000000;
+      color: #fff;
+      padding: 0.8rem 1.6rem;
+      border-radius: 7px;
+      border: none;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 180px;
+    }
+    .download-btn:hover {
+      background: #2ec4b6;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(46, 196, 182, 0.4);
+    }
+    .return-home-btn {
+      background: #c7f2ee;
+      color: #000000;
+      padding: 0.8rem 1.6rem;
+      border-radius: 7px;
+      border: 2px solid #2ec4b6;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .return-home-btn:hover {
+      background: #2ec4b6;
+      color: #fff;
+    }
+
+    /* Add to ResultBg.css for Inactive/Failed results */
+.result-container-inactive {
+  /* Inherit general container styling */
+  background: rgba(255, 255, 255, 0.97);
   border-radius: 18px;
-  box-shadow: 0 6px 32px rgba(60,0,97,0.13);
+  /* Use a subtle red shadow for the failed state */
+  box-shadow: 0 6px 32px rgba(255, 0, 0, 0.15); 
   padding: 2.5rem 2.2rem;
   max-width: 720px;
   width: 95vw;
   text-align: center;
-  color: #32194a;
+  /* Remove green color from container text if inherited */
+  color: #000000; 
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.verification-details {
-  width: 100%;
-  margin: 1.5rem 0;
-  text-align: left;
-}
-
-.detail-item {
-  margin: 0.8rem 0;
-  padding: 0.8rem;
-  background: #f8f9fa;
-  border-radius: 8px;
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-}
-
-.detail-label {
-  font-weight: 600;
-  color: #3C0061;
-  font-size: 0.9rem;
-}
-
-.detail-value {
-  color: #2c3e50;
-  font-size: 1.1rem;
-  word-break: break-all;
-}
-
-.detail-value.hash {
-  font-family: monospace;
-  font-size: 0.9rem;
-  background: #e9ecef;
-  padding: 0.4rem;
-  border-radius: 4px;
-}
-
-.blockchain-details {
-  margin-top: 1.5rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid #e9ecef;
-}
-
-.blockchain-details h3 {
-  color: #3C0061;
+/* Style for the failed heading and message */
+.result-container-inactive h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  /* Red color for failure status */
+  color: #dc3545; 
   margin-bottom: 1rem;
-  font-size: 1.2rem;
 }
 
-.download-btns {
-  display: flex;
-  gap: 1.2rem;
-  margin: 1.5rem 0;
-  flex-wrap: wrap;
-  justify-content: center;
+.result-container-inactive .result-message {
+  color: #333;
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
 }
 
-.download-btn {
-  background: #3C0061;
+/* Red button for returning home on failure */
+.return-home-btn-inactive {
+  background: #dc3545; /* Red */
   color: #fff;
   padding: 0.8rem 1.6rem;
   border-radius: 7px;
-  border: none;
+  border: 2px solid #dc3545;
   font-weight: 600;
   font-size: 1rem;
   cursor: pointer;
   transition: all 0.2s ease;
 }
-
-.download-btn:hover {
-  background: #2ec4b6;
-  transform: translateY(-2px);
-}
-
-.return-home-btn {
-  background: #b2f7cc;
-  color: #218c4a;
-  border: none;
-  border-radius: 8px;
-  padding: 0.8rem 2.2rem;
-  font-size: 1.1rem;
-  font-weight: 700;
-  margin-top: 1rem;
-  cursor: pointer;
-  box-shadow: 0 2px 8px rgba(34,139,34,0.08);
-  transition: all 0.2s ease;
-}
-
-.return-home-btn:hover {
-  background: #2ec4b6;
+.return-home-btn-inactive:hover {
+  background: #c82333; /* Darker red */
   color: #fff;
-  transform: translateY(-2px);
 }
 
-.result-message {
-  font-size: 1.15rem;
-  margin: 1.5rem 0;
-  color: #e53935;
+.detail-value-hash-ina{
+  font-family: monospace;
+  font-size: 0.95rem; /* Slightly larger/more readable */
+  background: #dc3545; /* Light accent background */
+  color: #000; /* Dark text for contrast */
+  padding: 0.5rem 0.8rem;
+  border-radius: 6px;
+  max-width: 65%; /* Constrain hash size slightly */
+  overflow: hidden;
+  text-overflow: ellipsis; /* Use ellipsis if too long (optional, break-all usually works) */
+  word-break: break-all;
+  text-align: right;
 }
-
-@media (max-width: 600px) {
-  .result-container {
-    padding: 1.5rem 1.2rem;
-  }
-  
-  .download-btns {
-    flex-direction: column;
-    width: 100%;
-  }
-  
-  .download-btn {
-    width: 100%;
-  }
-} 

@@ -53,7 +53,7 @@ const Account = () => {
     if (res.ok) {
       alert('Password changed successfully. Please log in again.');
       localStorage.removeItem('token');
-      window.location.href = '/login/login.html';
+      window.location.href = '/login';
     } else {
       const data = await res.json();
       alert(data.message || 'Password change failed.');
@@ -65,9 +65,12 @@ const Account = () => {
       <h2>Account Area</h2>
 
       <div className="account-buttons">
-        <button className={view === 'info' ? 'active-btn' : ''} onClick={() => setView('info')}>Show Account Info</button>
-        <button className={view === 'uploads' ? 'active-btn' : ''} onClick={handleGetUploads}>Show Number of Uploads</button>
-        <button className={view === 'password' ? 'active-btn' : ''} onClick={() => setView('password')}>Change Password</button>
+        <button className={view === 'info' ? 'active-btn' : ''} 
+          onClick={() => setView('info')}>Show Account Info</button>
+        <button className={view === 'uploads' ? 'active-btn' : ''} 
+          onClick={handleGetUploads}>Show Number of Uploads</button>
+        <button className={view === 'password' ? 'active-btn' : ''} 
+          onClick={() => setView('password')}>Change Password</button>
       </div>
 
       {view === 'info' && accountData && (

@@ -50,13 +50,14 @@ const Register = () => {
         <Link to="/" className="home-button">
           <i className="fas fa-home"></i> Home
         </Link>
-        <h2 className="brand-name">NGCFO<span className="highlight">.COM</span></h2>
+        <h2 className="brand-name">CERTA<span className="highlight">.com</span></h2>
       </div>
       <h1>Register</h1>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="schoolName">School Name</label>
           <input
+            placeholder='school name'
             type="text"
             id="schoolName"
             value={schoolName}
@@ -67,6 +68,7 @@ const Register = () => {
         <div className="form-group">
           <label htmlFor="email">Email</label>
           <input
+            placeholder='email'
             type="email"
             id="email"
             value={email}
@@ -77,6 +79,7 @@ const Register = () => {
         <div className="form-group">
           <label htmlFor="password">Password</label>
           <input
+            placeholder='password'
             type="password"
             id="password"
             value={password}
@@ -87,6 +90,7 @@ const Register = () => {
         <div className="form-group">
           <label htmlFor="verifyPassword">Verify Password</label>
           <input
+            placeholder='verify password'
             type="password"
             id="verifyPassword"
             value={verifyPassword}

@@ -1,101 +1,185 @@
+/* -------------------------------------------------------------------------------- */
+/* --- create.css (Updated for Black Text Visibility) --- */
+/* -------------------------------------------------------------------------------- */
+
 .create-container {
+  /* Aligné avec le style du login/autres pages */
   background: #fff;
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  font-family: Arial, sans-serif;
+  padding: 2.5rem 2rem 2rem 2rem;
+  border-radius: 16px;
+  /* Ombre générale légèrement ajustée */
+  box-shadow: 0 6px 32px rgba(0, 0, 0, 0.08); 
+  font-family: 'Inter', sans-serif;
   max-width: 480px;
-  margin: 40px auto;
+  margin: 60px auto;
 }
 
+/* --- Boutons de Navigation (Certificate/Document) --- */
 .create-buttons {
-  margin-bottom: 18px;
+  margin-bottom: 25px;
   display: flex;
-  gap: 0.7rem;
+  gap: 12px;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 10px;
 }
 
 .create-buttons button {
-  padding: 7px 18px;
-  border: 2px solid #4B256A;
-  border-radius: 6px;
-  background: none;
-  color: #4B256A;
+  padding: 8px 20px;
+  border: none;
+  border-radius: 8px;
+  background: #f7f7f7;
+  color: #555;
   cursor: pointer;
   font-weight: 600;
-  font-size: 0.98rem;
-  transition: background-color 0.2s, color 0.2s, box-shadow 0.2s;
-  box-shadow: 0 1px 4px rgba(80, 60, 120, 0.07);
+  font-size: 1rem;
+  transition: background-color 0.2s, color 0.2s;
 }
 
 .create-buttons button:hover {
-  background-color: #f3eafd;
-  color: #32194a;
+  background-color: #222;
 }
 
 .create-buttons .active-btn {
-  background-color: #4B256A !important;
-  color: #eee;
-  border: 2px solid #4B256A;
+  /* NOUVELLE COULEUR PRIMAIRE : Vert */
+  background-color: #2ec4b6; 
+  color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
+/* --- Formulaire --- */
 .create-section {
-  margin-top: 16px;
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 15px;
 }
 
 .create-section label {
   font-weight: 500;
-  margin-bottom: 2px;
-  color: #4B256A;
-  font-size: 0.98rem;
-}
-
-input[type='text'], input[type='file'] {
-  margin-top: 4px;
-  padding: 7px 10px;
-  width: 220px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 0.98rem;
-  background: #faf8fd;
-  transition: border 0.2s;
-}
-input[type='text']:focus, input[type='file']:focus {
-  border: 1.5px solid #a77cf4;
-  background: #fff;
-}
-
-.checkbox-label {
-  font-weight: normal;
-  margin-top: 8px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.97rem;
-}
-
-button.submit-btn {
-  margin-top: 8px;
-  background-color: #4B256A;
-  color: #fff;
-  width: 120px;
-  border-radius: 6px;
-  font-weight: 600;
+  /* FIX: Ensure Label Text is Black for visibility */
+  color: #000 !important; /* Made explicit with !important just in case of unexpected inheritance */
   font-size: 1rem;
-  padding: 8px 0;
-  border: none;
-  transition: background 0.2s;
-}
-button.submit-btn:hover {
-  background-color: #32194a;
-  color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
-.error-msg {
-  color: #d32f2f;
-  margin-bottom: 8px;
+input[type='text'], 
+input[type='file'] {
+  padding: 0.7rem 1rem;
+  /* Bordure neutre */
+  border: 1.5px solid #e0e0e0; 
+  border-radius: 7px;
+  font-size: 1rem;
+  /* Fond très clair */
+  background: #fafafa; 
+  transition: border 0.2s;
+  width: 100%;
+  box-sizing: border-box;
+  /* Ensure input text itself is visible */
+  color: #222; 
+}
+input[type='text']:focus, 
+input[type='file'] {
+  outline: none;
+  /* COULEUR D'ACCENTUATION : Vert #2ec4b6 */
+  border-color: #2ec4b6; 
+  box-shadow: 0 0 0 3px rgba(46, 196, 182, 0.3);
+}
+
+
+/* --- Styles de la Checkbox (CORRIGÉ ET COLORÉ) --- */
+.checkbox-label {
+  display: flex !important; 
+  flex-direction: row !important;
+  align-items: center; 
+  gap: 8px;
+  cursor: pointer;
+  font-weight: 400 !important;
+  color: #444; /* Texte secondaire en gris foncé */
+}
+
+.checkbox-label input[type='checkbox'] {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  padding: 0;
+  /* Bordure en Noir */
+  border: 1px solid #222; 
+  border-radius: 4px;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  background: #fff;
+  position: relative;
+  transition: all 0.2s;
+}
+
+.checkbox-label input[type='checkbox']:checked {
+  /* COULEUR D'ACCENTUATION : Vert #2ec4b6 */
+  background-color: #2ec4b6; 
+  border-color: #2ec4b6;
+}
+
+/* Ajoute l'icône de coche */
+.checkbox-label input[type='checkbox']:checked::after {
+  content: '\2713';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #26a599; /* FIX: Changed to white to be visible on the green checked background */
+  font-size: 14px;
   font-weight: bold;
-  font-size: 0.98rem;
-} 
+}
+
+
+/* --- Bouton de Soumission --- */
+.submit-btn {
+  /* COULEUR D'ACCENTUATION: #2ec4b6 */
+  background-color: #2ec4b6;
+  color: #000;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 20px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 10px rgba(46, 196, 182, 0.3);
+}
+
+.submit-btn:hover:not(:disabled) {
+  /* Teinte légèrement plus foncée du vert */
+  background-color: #26a599; 
+}
+
+.submit-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  opacity: 0.7;
+  box-shadow: none;
+}
+
+/* --- Messages de Notification --- */
+.message-box {
+  padding: 12px 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.message-box.success {
+  /* Vert pour succès (standard) */
+  background-color: #e6ffed;
+  color: #1a7e4b;
+  border: 1px solid #99e6b8;
+}
+
+.message-box.error {
+  /* Rouge pour erreur (standard) */
+  background-color: #ffe6e6;
+  color: #cc0000;
+  border: 1px solid #ff9999;
+}

@@ -3,62 +3,139 @@
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  font-family: Arial, sans-serif;
+  font-family: 'Inter', sans-serif;
+  max-width: 600px; /* Ajout d'une max-width pour centrer et encadrer */
+  margin: 40px auto;
 }
 
+/* --- Navigation Buttons (Account, Password) --- */
 .account-buttons {
   margin-bottom: 20px;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 10px;
+  display: flex;
+  gap: 15px;
 }
 
 .account-buttons button {
-  margin-right: 10px;
   padding: 10px 16px;
-  border: 2px solid #4B256A;
+  /* Utilisation du Noir pour la bordure par défaut */
+  border: 2px solid #2ec4b6; 
   border-radius: 5px;
   background: none;
-  color: #4B256A;
+  /* Utilisation du Noir pour la couleur du texte par défaut */
+  color: #2ec4b6; 
   cursor: pointer;
   font-weight: 600;
   font-size: 1rem;
-  transition: background-color 0.3s, color 0.3s;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
 
 .account-buttons button:hover {
-  background-color: #f3eafd;
-  color: #32194a;
+  background-color: #e6fffb; /* Teinte très légère de vert/cyan */
+  color: #000; 
+  border-color: #2ec4b6;
 }
 
 .account-buttons .active-btn {
-  background-color: #4B256A !important;
-  color: #eee;
-  border: 2px solid #4B256A;
+  background-color: #2ec4b6 !important;
+  color: #fff;
+  border: 2px solid #2ec4b6; 
 }
 
+
+/* --- Sections and Form Elements --- */
 .account-section {
   margin-top: 20px;
 }
 
-input[type='password'] {
-  margin-top: 10px;
+.account-section h3 {
+  /* Couleur Vert Menthe pour les sous-titres de section */
+  color: #000;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.form-group {
+  margin-bottom: 1.2rem;
+}
+
+.form-group label {
   display: block;
-  padding: 8px;
-  width: 300px;
+  font-weight: 500;
+  color: #444;
+  margin-bottom: 0.4rem;
+}
+
+/* Common input styles */
+input[type='text'], 
+input[type='email'], 
+input[type='password'] {
+  display: block;
+  padding: 10px 12px;
+  width: 100%;
+  max-width: 350px; 
+  /* Bordure neutre */
   border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-button.submit-btn {
-  margin-top: 10px;
-  background-color: #4B256A;
-  color: #bbb;
-  width: 160px;
-  border-radius: 6px;
-  font-weight: 600;
+  border-radius: 7px;
   font-size: 1rem;
-  padding: 10px 0;
+  background: #fafafa;
+  box-sizing: border-box;
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-button.submit-btn:hover {
-  background-color: #32194a;
+input:focus {
+  outline: none;
+  border-color: #2ec4b6;
+  box-shadow: 0 0 0 3px rgba(46, 196, 182, 0.3);
+}
+
+/* --- Action Buttons --- */
+.action-btn {
+  /* Couleur primaire pour les boutons d'action */
+  background-color: #222;
   color: #fff;
-} 
+  border: none;
+  border-radius: 7px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.action-btn:hover:not(:disabled) {
+  /* Vert Menthe au survol du bouton principal */
+  background-color: #2ec4b6; 
+  color: #000; /* Texte noir pour meilleur contraste */
+  box-shadow: 0 4px 10px rgba(46, 196, 182, 0.3);
+}
+
+.action-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  opacity: 0.7;
+  box-shadow: none;
+}
+
+/* --- Messages --- */
+.message-box {
+  padding: 12px 20px;
+  margin-top: 15px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.message-box.success {
+  background-color: #e6fffb; /* Très léger fond vert/cyan */
+  color: #1a7e4b;
+  border: 1px solid #2ec4b6;
+}
+
+.message-box.error {
+  background-color: #ffe6e6; 
+  color: #cc0000;
+  border: 1px solid #ff9999;
+}

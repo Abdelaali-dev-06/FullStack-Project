@@ -21,6 +21,8 @@ function Verify2({ verificationData, onBack }) {
           <p><strong>Operation ID:</strong> {verificationData.blockchain_data.operation_id}</p>
           <p><strong>School ID:</strong> {verificationData.blockchain_data.school_id}</p>
           <p><strong>File ID:</strong> {verificationData.blockchain_data.file_id}</p>
+          <p><strong>Original Hash:</strong> {verificationData.blockchain_data.original_hash}</p>
+          <p><strong>Processed Hash:</strong> {verificationData.blockchain_data.processed_hash}</p>
         </div>
 
         <button onClick={onBack} className="back-button">
