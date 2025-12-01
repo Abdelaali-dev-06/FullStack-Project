@@ -1,90 +1,117 @@
 import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { FaLock } from 'react-icons/fa';
 import './Login.css';
 
-const Login = () => {
+function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
+    setError('');
 
     try {
       const response = await fetch('http://127.0.0.1:8000/api/login', {
         method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          email,
-          password
-        })
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password }),
       });
-      const data = await response.json();
-      console.log('Login response:', data);
 
-      if (response.ok && data.token) {
+      const data = await response.json();
+
+      if (response.ok) {
         localStorage.setItem('token', data.token);
-        localStorage.setItem('school_id', data.school_id);
-        
-        console.log('Stored token:', localStorage.getItem('token'));
-        console.log('Stored school_id:', localStorage.getItem('school_id'));
-        
-        // alert('Login successful! Redirecting to dashboard...');
-        navigate('/dash');
-      } else if (data.message) {
-        alert(data.message);
+        localStorage.setItem('user', JSON.stringify(data.user));
+
+        if (email.endsWith('@edu.uiz.ac.ma')) {
+          navigate('/');
+        } else if (email.endsWith('@uiz.ac.ma')) {
+          navigate('/dash');
+        } else {
+          navigate('/');
+        }
       } else {
-        alert('Something went wrong.');
+        setError(data.message || 'Login failed');
       }
-    } catch (error) {
-      console.error('Login error:', error);
-      alert('Something went wrong.');
+    } catch (err) {
+      setError('Network error. Please try again.');
     }
   };
 
   return (
-    <div className="login-container">
-      <div className="brand-header">
-        <Link to="/" className="home-button">
-          <i className="fas fa-home"></i> Home
-        </Link>
-        <h2 className="brand-name">Certa<span className="highlight">.Com</span></h2>
-      </div>
-      <h1>Login</h1>
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="email">Email</label>
-          <input
-            placeholder='email'
-            type="email"
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
+    <div className="login-page-wrapper">
+      <div className="fun-shape shape-1"></div>
+      <div className="fun-shape shape-2"></div>
+
+      <div className="login-container-split">
+        <div className="login-visuals">
+          <div className="lock-animation-container">
+            <div className="lock-icon"><FaLock /></div>
+            <div className="lock-pulse"></div>
+          </div>
+          <h2>Welcome Back!</h2>
+          <p>Unlock your wellness journey.</p>
         </div>
-        <div className="form-group">
-          <label htmlFor="password">Password</label>
-          <input
-            placeholder='Password'
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
+
+        <div className="login-form-section">
+          <div className="login-header">
+            <h3>Login</h3>
+            <p>Enter your details to access your account</p>
+          </div>
+
+          <form onSubmit={handleLogin} className="fun-form">
+            <div className="input-group-fun">
+              <input
+                type="email"
+                placeholder=" "
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+              <label>Email Address</label>
+              <span className="input-highlight"></span>
+            </div>
+
+            <div className="input-group-fun">
+              <input
+                type="password"
+                placeholder=" "
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+              <label>Password</label>
+              <span className="input-highlight"></span>
+            </div>
+
+            <div style={{ textAlign: 'right', marginBottom: '20px' }}>
+              <span
+                onClick={() => navigate('/forget-password')}
+                className="link-fun"
+                style={{ fontSize: '0.9rem' }}
+              >
+                Forgot Password?
+              </span>
+            </div>
+
+            {error && <div className="error-message-fun">{error}</div>}
+
+            <button type="submit" className="btn-fun-primary">
+              Unlock Account
+            </button>
+          </form>
+
+          <div className="login-footer">
+            <p>Don't have an account? <span onClick={() => navigate('/register')} className="link-fun">Register here</span></p>
+            <button onClick={() => navigate('/')} className="btn-fun-text">Back to Home</button>
+          </div>
         </div>
-        <button type="submit">Login</button>
-      </form>
-      <div className="links">
-        <Link to="/forgot-password">Forgot Password?</Link>
-        <Link to="/register">Register</Link>
       </div>
     </div>
   );
-};
+}
 
 export default Login;

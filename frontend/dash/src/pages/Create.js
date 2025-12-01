@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { FaCheckCircle } from 'react-icons/fa';
 import './Create.css';
 import LoadingOverlay from '../components/LoadingOverlay';
 
@@ -8,9 +9,7 @@ const Create = () => {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
-  // Certificate form state
   const [certForm, setCertForm] = useState({ name: '', lname: '', certificate_title: '', pdf_file: null, agree: false });
-  // Document form state
   const [docForm, setDocForm] = useState({ doc_title: '', pdf_file: null, agree: false });
 
   const rawToken = localStorage.getItem('token');
@@ -96,12 +95,34 @@ const Create = () => {
 
   if (success) {
     return (
-      <div className="create-container">
-        <h2>Success!</h2>
-        <p>{success.message}</p>
-        {success.certificate_id && <p><strong>Certificate ID:</strong> {success.certificate_id}</p>}
-        {success.doc_id && <p><strong>Document ID:</strong> {success.doc_id}</p>}
-        <button onClick={() => { setSuccess(null); setError(''); }}>Go Back</button>
+      <div className="success-container">
+        <div className="success-card">
+          <FaCheckCircle className="success-icon-large" />
+          <h2 className="success-title">Success!</h2>
+          <div className="success-divider"></div>
+          <p className="success-message">{success.message}</p>
+
+          {(success.certificate_id || success.doc_id) && (
+            <div className="success-details-box">
+              {success.certificate_id && (
+                <div className="success-detail-row">
+                  <span className="detail-label">Certificate ID:</span>
+                  <span className="detail-value">{success.certificate_id}</span>
+                </div>
+              )}
+              {success.doc_id && (
+                <div className="success-detail-row">
+                  <span className="detail-label">Document ID:</span>
+                  <span className="detail-value">{success.doc_id}</span>
+                </div>
+              )}
+            </div>
+          )}
+
+          <button className="success-back-button" onClick={() => { setSuccess(null); setError(''); }}>
+            Go Back
+          </button>
+        </div>
       </div>
     );
   }

@@ -1,11 +1,11 @@
 import React, { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { FaCheckCircle, FaLock, FaBolt, FaGlobe, FaShieldAlt, FaLeaf, FaMoneyBillWave } from 'react-icons/fa';
 import './Body.css';
 import pic1 from './assets/pic1.png';
-import key from './assets/key.jpg';
 import pic5 from './assets/pic5.png';
+import SpotlightCard from './SpotlightCard';
 
-import HomeHeader from './HomeHeader';
 
 function Body() {
   const fileInputRef = useRef();
@@ -22,6 +22,13 @@ function Body() {
   };
 
   const handleVerifyPdf = async () => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      alert('Please login to verify certificates.');
+      navigate('/login');
+      return;
+    }
+
     if (!pdfFile) {
       alert('Please select a PDF file first.');
       return;
@@ -34,18 +41,15 @@ function Body() {
         body: formData,
       });
       const data = await res.json();
-      
-      // Case 2 (res3): Inactive or Deleted - ROBUST MESSAGE CHECK (for PDF endpoint)
+
       if (data && data.message && (data.message.toLowerCase().includes('not active') || data.message.toLowerCase().includes('inactive'))) {
         navigate('/res3', { state: data });
-        return; 
+        return;
       }
 
-      // Case 1 (res1): Success and Active
       if (res.ok && data && data.message && data.message.toLowerCase().includes('active')) {
         navigate('/res1', { state: data });
       } else {
-        // Case 3 (alert): Non-existent/General Failure
         alert(data.message || 'Verification failed.');
       }
     } catch (err) {
@@ -58,6 +62,13 @@ function Body() {
   };
 
   const handleVerifyId = async () => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      alert('Please login to verify certificates.');
+      navigate('/login');
+      return;
+    }
+
     if (!idInput.trim()) {
       alert('Please enter a Certificate or Document ID.');
       return;
@@ -65,27 +76,22 @@ function Body() {
     try {
       const res = await fetch(`http://localhost:8000/api/public/verify/${encodeURIComponent(idInput.trim())}`);
       const data = await res.json();
-      
-      // Case 3 (404): Non-existent (specific 404 alert)
+
       if (res.status === 404) {
         alert('Certificate ID not found in our system.');
         return;
       }
-      
-      // Case 2 (res3): Inactive or Deleted - Checking the explicit status field
+
       if (data && data.status && data.status.toLowerCase() === 'inactive') {
         navigate('/res3', { state: data });
-        return; 
+        return;
       }
 
-      // Case 1 (res2): Success and Active - Checking the explicit status field
-      if (res.ok && data && data.status && data.status.toLowerCase() === 'active') { 
+      if (res.ok && data && data.status && data.status.toLowerCase() === 'active') {
         navigate('/res2', { state: data });
       } else if (res.ok && data) {
-         // Fallback for successful fetch but missing status (should now be covered by 404/status checks)
-         navigate('/res2', { state: data });
+        navigate('/res2', { state: data });
       } else {
-        // Case 3 (alert): Non-existent (general alert or fallback)
         alert(data.message || 'Verification failed.');
       }
     } catch (err) {
@@ -95,106 +101,150 @@ function Body() {
 
   return (
     <>
-      <HomeHeader />
       <div className="main-content">
         <section className="hero-section">
-          <div className="hero-content">
-            <h1 className="hero-title-left">Secure Certificate Authentication, Management and Storage with Blockchain Technology </h1>
-            <p className="hero-subtitle">
-              Verify, store, and manage certificates with unparalleled security and ease.
-              Powered by blockchain.
-            </p>
-            <div className="verification-container">
-              <div className="verification-card">
-                <div className="verification-title">Verify with PDF Upload</div>
-                <div className="input-group">
-                  <input
-                    type="file"
-                    accept="application/pdf"
-                    ref={fileInputRef}
-                    className="certificate-input"
-                    style={{ display: 'none' }}
-                    id="pdf-upload"
-                    onChange={handleFileChange}
-                  />
-                  <span className="upload-icon" onClick={handleUploadClick} title="Upload PDF" role="button" tabIndex={0}>
-                    📎
-                  </span>
-                  <div className="upload-placeholder" onClick={handleUploadClick} tabIndex={0} role="button">
-                    Click here to upload PDF <span role="img" aria-label="paperclip">📎</span>
+          <div className="container hero-container">
+            <div className="hero-text">
+              <h1 className="hero-title">Secure Certificate Authentication with Blockchain</h1>
+              <p className="hero-subtitle">
+                Verify, store, and manage certificates with unparalleled security and ease.
+                Powered by cutting-edge blockchain technology.
+              </p>
+
+              <div className="verification-wrapper">
+                <div className="verification-tabs">
+                  <div className="verification-box">
+                    <h3>Verify by ID</h3>
+                    <div className="input-group">
+                      <input
+                        type="text"
+                        className="form-input"
+                        placeholder="Enter Certificate ID"
+                        value={idInput}
+                        onChange={handleIdInputChange}
+                      />
+                      <button className="btn btn-primary" onClick={handleVerifyId}>Check</button>
+                    </div>
                   </div>
-                  <button className="verify-button" onClick={handleVerifyPdf}>Verify</button>
+
+                  <div className="verification-divider">OR</div>
+
+                  <div className="verification-box">
+                    <h3>Verify by PDF</h3>
+                    <div className="input-group">
+                      <input
+                        type="file"
+                        accept="application/pdf"
+                        ref={fileInputRef}
+                        style={{ display: 'none' }}
+                        onChange={handleFileChange}
+                      />
+                      <button className="btn btn-outline full-width" onClick={handleUploadClick}>
+                        {pdfFile ? pdfFile.name : 'Upload PDF Document'}
+                      </button>
+                      <button className="btn btn-primary" onClick={handleVerifyPdf}>Verify</button>
+                    </div>
+                  </div>
                 </div>
-              </div>
-              <div className="verification-card">
-                <div className="verification-title">Check and Download using ID</div>
-                <div className="input-group">
-                  <input
-                    type="text"
-                    className="certificate-input"
-                    placeholder="Enter Certificate ID"
-                    value={idInput}
-                    onChange={handleIdInputChange}
-                  />
-                  <button className="verify-button" onClick={handleVerifyId}>Check</button>
-                </div>
-                <a
-                  href="https://www.youtube.com/watch?v=yqWX86uT5jM"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="youtube-tutorial-btn"
-                >
-                  <span className="red-play-icon">▶</span> Watch our small tutorial on YouTube
-                </a>
               </div>
             </div>
-          </div>
-          <div className="hero-image-row">
-            <img src={pic1} alt="Certificate" className="cert-image" />
-            <img src={pic5} alt="Trust" className="side-pic5 large" />
+
+            <div className="hero-image-container">
+              <img src={pic1} alt="Certificate Verification" className="hero-img" />
+            </div>
           </div>
         </section>
 
+        <section className="services-section">
+          <div className="container">
+            <div className="section-header">
+              <h2 className="section-title">Our Services</h2>
+              <p className="section-desc">Comprehensive solutions for certificate management and verification.</p>
+            </div>
+
+            <div className="services-grid">
+              <div className="service-card">
+                <div className="service-icon"><FaLock /></div>
+                <h3>Blockchain Security</h3>
+                <p>Immutable and tamper-proof storage for all your digital credentials.</p>
+                <a href="/features" className="service-link">View more →</a>
+              </div>
+
+              <div className="service-card">
+                <div className="service-icon"><FaBolt /></div>
+                <h3>Instant Verification</h3>
+                <p>Real-time verification of certificates using unique IDs or QR codes.</p>
+                <a href="/features" className="service-link">View more →</a>
+              </div>
+
+              <div className="service-card">
+                <div className="service-icon"><FaGlobe /></div>
+                <h3>Global Access</h3>
+                <p>Access and verify your documents from anywhere in the world, 24/7.</p>
+                <a href="/features" className="service-link">View more →</a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Why Choose Us Section */}
         <section className="features-section">
-          <div className="features-container">
-            <h2 className="features-title">Key Features</h2>
-            <div className="features-grid">
-              <div className="feature-box">
-                <span className="feature-icon">🔒</span>
-                <h3 className="feature-title">Secure Storage</h3>
-                <p className="feature-description">
-                  All certificates are stored securely using blockchain technology
-                </p>
-              </div>
-              <div className="feature-box">
-                <span className="feature-icon">⚡</span>
-                <h3 className="feature-title">Instant Verification</h3>
-                <p className="feature-description">
-                  Verify certificates instantly with unique IDs
-                </p>
-              </div>
-              <div className="feature-box">
-                <span className="feature-icon">🤖</span>
-                <h3 className="feature-title">AI Assistant</h3>
-                <p className="feature-description">
-                  Get instant answers about your certificates
-                </p>
-                <h4>Soon...!</h4>
-              </div>
+          <div className="container">
+            <div className="section-header">
+              <h2 className="section-title">Why Choose Us?</h2>
+              <p className="section-desc">Discover the unique benefits that set our platform apart.</p>
             </div>
-            <div className="key-image-below-grid">
-              <img src={key} alt="Key Features" className="key-image large" />
+
+            <div className="features-grid-cards">
+              <SpotlightCard spotlightColor="rgba(11, 102, 35, 0.15)">
+                <div className="feature-card-item">
+                  <div className="feature-icon-small"><FaShieldAlt /></div>
+                  <h4>Tamper-Proof</h4>
+                  <p>Once issued, certificates cannot be altered or forged.</p>
+                  <button onClick={() => navigate('/about')} className="btn btn-primary btn-sm">Learn More</button>
+                </div>
+              </SpotlightCard>
+
+              <SpotlightCard spotlightColor="rgba(11, 102, 35, 0.15)">
+                <div className="feature-card-item">
+                  <div className="feature-icon-small"><FaLeaf /></div>
+                  <h4>Eco-Friendly</h4>
+                  <p>Reduce paper waste with digital-first certificate management.</p>
+                  <button onClick={() => navigate('/about')} className="btn btn-primary btn-sm">Learn More</button>
+                </div>
+              </SpotlightCard>
+
+              <SpotlightCard spotlightColor="rgba(11, 102, 35, 0.15)">
+                <div className="feature-card-item">
+                  <div className="feature-icon-small"><FaMoneyBillWave /></div>
+                  <h4>Cost-Effective</h4>
+                  <p>Save on printing, shipping, and administrative costs.</p>
+                  <button onClick={() => navigate('/about')} className="btn btn-primary btn-sm">Learn More</button>
+                </div>
+              </SpotlightCard>
+
+              <SpotlightCard spotlightColor="rgba(11, 102, 35, 0.15)">
+                <div className="feature-card-item">
+                  <div className="feature-icon-small"><FaLock /></div>
+                  <h4>Blockchain Security</h4>
+                  <p>Immutable records secured by distributed ledger technology.</p>
+                  <button onClick={() => navigate('/about')} className="btn btn-primary btn-sm">Learn More</button>
+                </div>
+              </SpotlightCard>
             </div>
-            <div className="features-content">
-              <h3 >Why Choose Our Platform?</h3>
-              <p>Our platform conatain cutting-edge blockchain technology to provide the most secure and efficient certificate management system available. With features like instant verification, secure storage, and AI-powered assistance (Soon..!), we ensure your certificates are always protected and easily accessible.</p>
-              <ul>
-                <li>✅Blockchain-powered security</li>
-                <li>✅Instant verification system</li>
-                <li>✅User-friendly interface</li>
-                <li>✅24/7 support available</li>
-                <li>⌛AI-powered assistance. *Soon..!*</li>
-              </ul>
+          </div>
+        </section>
+
+        {/* Promo Section */}
+        <section className="promo-section">
+          <div className="container promo-container">
+            <div className="promo-content">
+              <h2>Trusted by Leading Institutions</h2>
+              <p>Join thousands of organizations securing their credentials with our blockchain technology.</p>
+              <button onClick={() => navigate('/login')} className="btn btn-primary">Get Started Today</button>
+            </div>
+            <div className="promo-image">
+              <img src={pic5} alt="Trusted Partner" className="promo-img" />
             </div>
           </div>
         </section>

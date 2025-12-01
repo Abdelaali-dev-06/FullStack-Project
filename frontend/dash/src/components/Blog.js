@@ -10,8 +10,6 @@ function Blog() {
       <div className="blog-root">
         <h1 className="blog-title">CERTA Blog</h1>
         <p className="blog-desc">Welcome to our blog! Stay tuned for updates, news, and insights about secure certificate management and blockchain in education and employment.</p>
-        <p className='blog-new-desc'>🤖 New feature coming soon !! 🤖</p>
-        <p className='blog-new-desc'>AI-powered tools for instant access and verification</p>
       </div>
       <HomeFooter />
     </>

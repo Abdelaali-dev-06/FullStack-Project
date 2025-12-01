@@ -1,6 +1,7 @@
 import React from 'react';
 import HomeHeader from './HomeHeader';
 import HomeFooter from './HomeFooter';
+import { FaLock, FaBolt } from 'react-icons/fa';
 import './About.css';
 
 function About() {
@@ -19,20 +20,15 @@ function About() {
             </p>
             <div className="about-features">
               <div className="about-feature">
-                <span className="feature-icon">🔒</span>
+                <span className="feature-icon"><FaLock /></span>
                 <h3>Secure</h3>
                 <p>Blockchain-powered verification ensures document authenticity</p>
               </div>
               <div className="about-feature">
-                <span className="feature-icon">⚡</span>
+                <span className="feature-icon"><FaBolt /></span>
                 <h3>Simple</h3>
                 <p>Easy-to-use interface for quick certificate management</p>
-              </div>
-              {/* <div className="about-feature">
-                <span className="feature-icon">🤖</span>
-                <h3>Smart</h3>
-                <p>AI-powered tools for instant access and verification</p>
-              </div> */}
+              </div>  
             </div>
           </div>
         </div>

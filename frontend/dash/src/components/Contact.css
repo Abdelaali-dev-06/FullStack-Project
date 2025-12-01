@@ -1,172 +1,209 @@
 .contact-root {
   min-height: 100vh;
-  /* Dark Violet to Accent Green gradient */
-  background: linear-gradient(135deg, #2ec4b6 0%, #000000 40%, #000000 50%, #000000 60%,#2ec4b6 100%);
-  padding: 2rem 1rem;
-  color: white;
+  background-color: var(--color-background);
   padding-top: 120px;
+  padding-bottom: 80px;
+  color: var(--color-text);
 }
 
 .contact-container {
-  max-width: 1200px;
+  max-width: 1000px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 0 20px;
 }
 
 .contact-title {
-  font-size: 2.5rem;
-  font-weight: 900;
+  font-size: 3rem;
+  font-weight: 800;
   text-align: center;
-  margin-bottom: 1rem;
-  /* UPDATED: Accent Green */
-  color: #2ec4b6;
+  margin-bottom: 1.5rem;
+  color: var(--color-primary);
 }
 
 .contact-subtitle {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   line-height: 1.6;
   text-align: center;
-  margin-bottom: 3rem;
-  color: rgba(255, 255, 255, 0.9);
-  max-width: 800px;
+  margin-bottom: 4rem;
+  color: var(--color-text-light);
+  max-width: 700px;
   margin-left: auto;
   margin-right: auto;
 }
 
 .contact-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
-  margin-bottom: 4rem;
+  margin-bottom: 5rem;
 }
 
 .contact-card {
-  background: #181818;
-  backdrop-filter: blur(10px);
-  border-radius: 15px;
-  padding: 2rem;
+  background: var(--color-white);
+  border-radius: 24px;
+  padding: 2.5rem;
   text-align: center;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 10px 30px rgba(13, 47, 27, 0.05);
+  border: 1px solid rgba(13, 47, 27, 0.05);
 }
 
 .contact-card:hover {
   transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(13, 47, 27, 0.1);
+  border-color: var(--color-accent);
 }
 
 .contact-icon {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-  display: block;
-  /* Ensure icon is visible against the transparent card */
-  color: #2ec4b6; 
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  display: inline-block;
+  padding: 15px;
+  background: var(--color-secondary);
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .contact-card h3 {
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   font-weight: 700;
   margin-bottom: 1rem;
-  /* UPDATED: Accent Green */
-  color: #2ec4b6;
+  color: var(--color-primary);
 }
 
 .contact-link {
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--color-text);
   text-decoration: none;
   font-size: 1.1rem;
+  font-weight: 500;
   transition: color 0.3s ease;
 }
 
 .contact-link:hover {
-  /* UPDATED: Accent Green on hover */
-  color: #2ec4b6;
+  color: var(--color-primary);
 }
 
 .contact-form-container {
-  background: #181818;
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
-  padding: 2.5rem;
-  margin-top: 2rem;
+  background: var(--color-white);
+  border-radius: 30px;
+  padding: 4rem;
+  box-shadow: 0 20px 60px rgba(13, 47, 27, 0.08);
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .contact-form-container h2 {
-  font-size: 1.8rem;
-  font-weight: 700;
+  font-size: 2rem;
+  font-weight: 800;
   text-align: center;
-  margin-bottom: 2rem;
-  color: #2ec4b6;
+  margin-bottom: 3rem;
+  color: var(--color-primary);
 }
 
 .contact-form {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  max-width: 450px;
-  margin: 0 auto;
 }
 
 .form-group input,
 .form-group textarea {
-  width: 90%;
-  padding: 1rem;
-  border: 2px solid #181818;
-  border-radius: 10px;
-  background: white;
-  color: black;
+  width: 100%;
+  padding: 1.2rem;
+  border: 2px solid var(--color-secondary);
+  border-radius: 16px;
+  background: var(--color-background);
+  color: var(--color-text);
   font-size: 1rem;
-  transition: border-color 0.3s ease;
+  transition: all 0.3s ease;
+  font-family: inherit;
+  box-sizing: border-box;
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
   outline: none;
-  border-color: #2ec4b6;
+  border-color: var(--color-primary);
+  background: var(--color-white);
+  box-shadow: 0 0 0 4px var(--color-secondary);
 }
 
 .form-group input::placeholder,
 .form-group textarea::placeholder {
-  color: rgba(42, 39, 39, 0.85);
+  color: var(--color-text-light);
 }
 
-.submit-btn {
-  background: #2ec4b6;
+.send-button {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+  background: var(--color-primary);
   color: white;
+  padding: 0.7em 1em;
+  padding-left: 0.9em;
+  display: flex;
+  align-items: center;
   border: none;
-  border-radius: 10px;
-  padding: 1rem 2rem;
-  font-size: 1.1rem;
-  font-weight: 700;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.2s;
   cursor: pointer;
-  transition: background 0.3s ease;
-  margin-top: 1rem;
+  margin: 1rem auto 0;
+  box-shadow: 0 4px 12px rgba(11, 102, 35, 0.3);
 }
 
-.submit-btn:hover {
-  background: #24a89d;
+.send-button:hover {
+  background: #084d1a;
+  box-shadow: 0 6px 16px rgba(11, 102, 35, 0.4);
+}
+
+.send-button span {
+  display: block;
+  margin-left: 0.3em;
+  transition: all 0.3s ease-in-out;
+}
+
+.send-button svg {
+  display: block;
+  transform-origin: center center;
+  transition: transform 0.3s ease-in-out;
+}
+
+.send-button:hover .svg-wrapper {
+  animation: fly-1 0.6s ease-in-out infinite alternate;
+}
+
+.send-button:hover svg {
+  transform: translateX(1.2em) rotate(45deg) scale(1.1);
+}
+
+.send-button:hover span {
+  transform: translateX(5em);
+}
+
+.send-button:active {
+  transform: scale(0.95);
+}
+
+@keyframes fly-1 {
+  from {
+    transform: translateY(0.1em);
+  }
+
+  to {
+    transform: translateY(-0.1em);
+  }
 }
 
 @media (max-width: 768px) {
-  .contact-container {
-    padding: 1rem;
-  }
-  
-  .contact-title {
-    font-size: 2rem;
-  }
-  
-  .contact-subtitle {
-    font-size: 1rem;
-  }
-  
-  .contact-cards {
-    grid-template-columns: 1fr;
-  }
-  
   .contact-form-container {
-    padding: 1.5rem;
+    padding: 2rem;
   }
-  
-  .contact-form-container h2 {
-    font-size: 1.5rem;
+
+  .contact-title {
+    font-size: 2.5rem;
   }
 }

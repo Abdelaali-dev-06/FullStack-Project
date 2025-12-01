@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate, Link } from 'react-router-dom';
+import { FaHome, FaStar, FaInfoCircle, FaQuestionCircle, FaBlog, FaEnvelope, FaSignInAlt, FaUserPlus, FaSignOutAlt } from 'react-icons/fa';
 import './HomeHeader.css';
-import logo from './assets/logo.png'; 
+import logo from './assets/logo.png';
 
 function HomeHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false); 
-  const [scrolled, setScrolled] = useState(false); 
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -17,23 +18,23 @@ function HomeHeader() {
 
   useEffect(() => {
     const handleScroll = () => {
-        setScrolled(window.scrollY > 50);
+      setScrolled(window.scrollY > 20);
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []); 
+  }, []);
 
   useEffect(() => {
     checkAuthStatus();
     const handleStorageChange = () => {
-        checkAuthStatus();
+      checkAuthStatus();
     };
     window.addEventListener('storage', handleStorageChange);
     return () => {
-        window.removeEventListener('storage', handleStorageChange);
+      window.removeEventListener('storage', handleStorageChange);
     };
   }, [location.pathname]);
 
@@ -42,15 +43,15 @@ function HomeHeader() {
   };
 
   const handleLogout = () => {
-      localStorage.removeItem('token');
-      setIsLoggedIn(false); 
-      navigate('/');
-      setMenuOpen(false);
+    localStorage.removeItem('token');
+    setIsLoggedIn(false);
+    navigate('/login');
+    setMenuOpen(false);
   };
 
   const handleSectionNav = (sectionId) => (e) => {
     if (location.pathname === '/') {
-      e.preventDefault(); 
+      e.preventDefault();
       const el = document.getElementById(sectionId);
       if (el) {
         el.scrollIntoView({ behavior: 'smooth' });
@@ -58,76 +59,114 @@ function HomeHeader() {
     } else if (sectionId === 'home') {
       navigate('/');
       window.scrollTo({ top: 0, behavior: 'smooth' });
-      e.preventDefault(); 
+      e.preventDefault();
     }
-    
+
     setMenuOpen(false);
   };
 
-  // 💡 NEW LOGIC: Function to determine if a link is the active page
   const getLinkClass = (path) => {
-    // Use exact match for the home page ('/') to prevent it from matching all paths
     if (path === '/') {
-        return location.pathname === '/' ? 'active' : '';
+      return location.pathname === '/' ? 'active' : '';
     }
-    // For other pages, check if the current path starts with the link path
     return location.pathname.startsWith(path) ? 'active' : '';
   };
-  // END NEW LOGIC
 
   return (
     <>
-      <header className={`header ${scrolled ? 'scrolled' : ''}`}> 
+      <header className={`header ${scrolled ? 'scrolled' : ''}`}>
         <div className="header-container">
           <div className="logo-container">
-            <Link to="/" onClick={handleSectionNav('home')}> 
-              <img src={logo} alt="certa.com Logo" className="logo" onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'block'; }}/>
+            <Link to="/" onClick={handleSectionNav('home')}>
+              <img src={logo} alt="certa.com Logo" className="logo" onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'block'; }} />
               <div className="logo-placeholder" style={{ display: 'none' }}></div>
-              <span className="logo-text">Certa<span className="com-text">.Com</span></span>
+              <span className="logo-text">Certa<span className="com-text">.com</span></span>
             </Link>
           </div>
-          <nav 
-            className={`nav-menu${menuOpen ? ' open' : ''}`} 
-            aria-expanded={menuOpen}
+
+          <nav
+            className={`nav-menu${menuOpen ? ' open' : ''}`}
             aria-label="Main navigation">
             <ul className="nav-links">
-              <li><Link to="/" onClick={handleSectionNav('home')} className={getLinkClass('/')}>Home</Link></li>
-              <li><Link to="/features" onClick={() => setMenuOpen(false)} className={getLinkClass('/features')}>Features</Link></li>
-              <li><Link to="/about" onClick={() => setMenuOpen(false)} className={getLinkClass('/about')}>About</Link></li>
-              <li><Link to="/faq" onClick={() => setMenuOpen(false)} className={getLinkClass('/faq')}>FAQ</Link></li>
-              <li><Link to="/blog" onClick={() => setMenuOpen(false)} className={getLinkClass('/blog')}>Blog</Link></li>
-              <li><Link to="/contact" onClick={() => setMenuOpen(false)} className={getLinkClass('/contact')}>Contact</Link></li>
-              
+              <li>
+                <Link to="/" onClick={handleSectionNav('home')} className={getLinkClass('/')}>
+                  <FaHome className="nav-icon" />
+                  <span className="nav-text">Home</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/features" onClick={() => { setMenuOpen(false); window.scrollTo(0, 0); }} className={getLinkClass('/features')}>
+                  <FaStar className="nav-icon" />
+                  <span className="nav-text">Features</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/about" onClick={() => { setMenuOpen(false); window.scrollTo(0, 0); }} className={getLinkClass('/about')}>
+                  <FaInfoCircle className="nav-icon" />
+                  <span className="nav-text">About</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/faq" onClick={() => { setMenuOpen(false); window.scrollTo(0, 0); }} className={getLinkClass('/faq')}>
+                  <FaQuestionCircle className="nav-icon" />
+                  <span className="nav-text">FAQ</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/blog" onClick={() => { setMenuOpen(false); window.scrollTo(0, 0); }} className={getLinkClass('/blog')}>
+                  <FaBlog className="nav-icon" />
+                  <span className="nav-text">Blog</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/contact" onClick={() => { setMenuOpen(false); window.scrollTo(0, 0); }} className={getLinkClass('/contact')}>
+                  <FaEnvelope className="nav-icon" />
+                  <span className="nav-text">Contact</span>
+                </Link>
+              </li>
+
               <li className="mobile-auth-buttons">
+                <div className="mobile-menu-divider"></div>
                 <div className="auth-buttons-mobile-in-menu">
-                    {isLoggedIn ? (
-                       <>
-                            
-                            <button className="logout-btn" onClick={handleLogout}>Logout</button>
-                        </>
-                    ) : (
-                         <>
-                            <button className="login-btn" onClick={() => navigate('/login')}>Login</button>
-                            <button className="signup-btn" onClick={() => navigate('/register')}>Sign Up</button>
-                        </>
-                    )}
+                  {isLoggedIn ? (
+                    <button className="btn btn-primary logout-btn" onClick={handleLogout}>
+                      <FaSignOutAlt className="btn-icon" />
+                      <span className="btn-text">Logout</span>
+                    </button>
+                  ) : (
+                    <>
+                      <button className="btn btn-outline login-btn" onClick={() => { navigate('/login'); setMenuOpen(false); window.scrollTo(0, 0); }}>
+                        <FaSignInAlt className="btn-icon" />
+                        <span className="btn-text">Login</span>
+                      </button>
+                      <button className="btn btn-primary signup-btn" onClick={() => { navigate('/register'); setMenuOpen(false); window.scrollTo(0, 0); }}>
+                        <FaUserPlus className="btn-icon" />
+                        <span className="btn-text">Sign Up</span>
+                      </button>
+                    </>
+                  )}
                 </div>
               </li>
             </ul>
           </nav>
-          
-        
+
           <div className="auth-buttons desktop-only">
             {isLoggedIn ? (
-               <>
-                    
-                    <button className="logout-btn" onClick={handleLogout}>Logout</button>
-                </>
+              <button className="btn btn-primary logout-btn" onClick={handleLogout}>
+                <FaSignOutAlt className="btn-icon" />
+                <span className="btn-text">Logout</span>
+              </button>
             ) : (
-                 <>
-                    <button className="login-btn" onClick={() => navigate('/login')}>Login</button>
-                    <button className="signup-btn" onClick={() => navigate('/register')}>Sign Up</button>
-                </>
+              <>
+                <button className="btn btn-outline login-btn" onClick={() => { navigate('/login'); window.scrollTo(0, 0); }}>
+                  <FaSignInAlt className="btn-icon" />
+                  <span className="btn-text">Log in</span>
+                </button>
+                <button className="btn btn-primary signup-btn" onClick={() => { navigate('/register'); window.scrollTo(0, 0); }}>
+                  <FaUserPlus className="btn-icon" />
+                  <span className="btn-text">Sign Up</span>
+                </button>
+              </>
             )}
           </div>
 

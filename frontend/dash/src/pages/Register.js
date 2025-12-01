@@ -1,110 +1,143 @@
 import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { FaRocket } from 'react-icons/fa';
 import './Register.css';
 
-const Register = () => {
+function Register() {
   const [schoolName, setSchoolName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [verifyPassword, setVerifyPassword] = useState('');
+  const [error, setError] = useState('');
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
+    setError('');
+
+    // Email Domain Validation
+    const studentDomain = '@edu.uiz.ac.ma';
+    const adminDomain = '@uiz.ac.ma';
+
+    if (!email.endsWith(studentDomain) && !email.endsWith(adminDomain)) {
+      setError(`Email must end with ${studentDomain} or ${adminDomain}`);
+      return;
+    }
 
     if (password !== verifyPassword) {
-      alert('Passwords do not match!');
+      setError("Passwords don't match!");
       return;
     }
 
     try {
-      const response = await fetch('http://localhost:8000/api/register', {
+      const response = await fetch('http://127.0.0.1:8000/api/register', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           school_name: schoolName,
-          email,
-          password
-        })
+          email: email,
+          password: password,
+          password_confirmation: verifyPassword,
+        }),
       });
+
       const data = await response.json();
-      
-      if (response.ok && data.school_id) {
-        alert('Registration was successful! Click OK to go to login.');
+
+      if (response.ok) {
         navigate('/login');
-      } else if (data.message && data.message.toLowerCase().includes('exists')) {
-        alert('Email already exists. Please login instead.');
       } else {
-        alert('Something went wrong.');
+        setError(data.message || 'Registration failed');
       }
-    } catch (error) {
-      alert('Something went wrong.');
+    } catch (err) {
+      setError('Network error. Please try again.');
     }
   };
 
   return (
-    <div className="register-container">
-      <div className="brand-header">
-        <Link to="/" className="home-button">
-          <i className="fas fa-home"></i> Home
-        </Link>
-        <h2 className="brand-name">CERTA<span className="highlight">.com</span></h2>
-      </div>
-      <h1>Register</h1>
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="schoolName">School Name</label>
-          <input
-            placeholder='school name'
-            type="text"
-            id="schoolName"
-            value={schoolName}
-            onChange={(e) => setSchoolName(e.target.value)}
-            required
-          />
+    <div className="register-page-wrapper">
+      <div className="fun-shape shape-1"></div>
+      <div className="fun-shape shape-2"></div>
+
+      <div className="register-container-split">
+        <div className="register-visuals">
+          <div className="lock-animation-container">
+            <div className="lock-icon"><FaRocket /></div>
+            <div className="lock-pulse"></div>
+          </div>
+          <h2>Join the Future!</h2>
+          <p>Start your secure verification journey today.</p>
         </div>
-        <div className="form-group">
-          <label htmlFor="email">Email</label>
-          <input
-            placeholder='email'
-            type="email"
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
+
+        <div className="register-form-section">
+          <div className="register-header">
+            <h3>Create Account</h3>
+            <p>Sign up for free and get started</p>
+          </div>
+
+          <form onSubmit={handleRegister} className="fun-form">
+            <div className="input-group-fun">
+              <input
+                type="text"
+                placeholder=" "
+                value={schoolName}
+                onChange={(e) => setSchoolName(e.target.value)}
+                required
+              />
+              <label>School / Institution Name</label>
+              <span className="input-highlight"></span>
+            </div>
+
+            <div className="input-group-fun">
+              <input
+                type="email"
+                placeholder=" "
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+              <label>Email Address</label>
+              <span className="input-highlight"></span>
+            </div>
+
+            <div className="input-group-fun">
+              <input
+                type="password"
+                placeholder=" "
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+              <label>Password</label>
+              <span className="input-highlight"></span>
+            </div>
+
+            <div className="input-group-fun">
+              <input
+                type="password"
+                placeholder=" "
+                value={verifyPassword}
+                onChange={(e) => setVerifyPassword(e.target.value)}
+                required
+              />
+              <label>Confirm Password</label>
+              <span className="input-highlight"></span>
+            </div>
+
+            {error && <div className="error-message-fun">{error}</div>}
+
+            <button type="submit" className="btn-fun-primary">
+              Get Started
+            </button>
+          </form>
+
+          <div className="register-footer">
+            <p>Already have an account? <span onClick={() => navigate('/login')} className="link-fun">Login here</span></p>
+            <button onClick={() => navigate('/')} className="btn-fun-text">Back to Home</button>
+          </div>
         </div>
-        <div className="form-group">
-          <label htmlFor="password">Password</label>
-          <input
-            placeholder='password'
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="verifyPassword">Verify Password</label>
-          <input
-            placeholder='verify password'
-            type="password"
-            id="verifyPassword"
-            value={verifyPassword}
-            onChange={(e) => setVerifyPassword(e.target.value)}
-            required
-          />
-        </div>
-        <button type="submit">Register</button>
-      </form>
-      <div className="links">
-        <Link to="/login">Already have an account? Login here</Link>
       </div>
     </div>
   );
-};
+}
 
-export default Register; 
+export default Register;

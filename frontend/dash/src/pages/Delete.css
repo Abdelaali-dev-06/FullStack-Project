@@ -1,174 +1,168 @@
 .delete-container {
-max-width: 550px;
-margin: 2.5rem auto;
-background: #ffffff;
-border-radius: 16px;
-box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-padding: 3rem;
-font-family: 'Inter', sans-serif;
-border: 1px solid #f0f0f0;
+  max-width: 550px;
+  margin: 2.5rem auto;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  padding: 3rem;
+  font-family: 'Montserrat', sans-serif;
+  border: 1px solid #f0f0f0;
 }
 
 h2 {
- color: #333;
- font-size: 1.8rem;
- font-weight: 700;
- margin-bottom: 0.5rem;
- border-bottom: 2px solid #f0f0f0;
- padding-bottom: 1rem;
+  color: #333;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 1rem;
 }
 
 .important-note {
-margin-bottom: 2rem;
-padding: 1.5rem;
-background-color: #fffde7;
-border: 1px solid #ffcc00;
-border-radius: 10px;
-color: #333;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background-color: #fffde7;
+  border: 1px solid #ffcc00;
+  border-radius: 10px;
+  color: #333;
 }
 
 .important-note strong {
-font-size: 1.1rem;
-color: #c80000;
-display: block;
-margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+  color: #c80000;
+  display: block;
+  margin-bottom: 0.5rem;
 }
 
 .important-note p {
- line-height: 1.5;
- margin: 0;
+  line-height: 1.5;
+  margin: 0;
 }
 
 .delete-form h3 {
-color: #c80000;
-margin-top: 2rem;
-margin-bottom: 1.5rem;
-font-size: 1.4rem;
-font-weight: 600;
+  color: #c80000;
+  margin-top: 2rem;
+  margin-bottom: 1.5rem;
+  font-size: 1.4rem;
+  font-weight: 600;
 }
 
-/* --- FIX FOR LABEL VISIBILITY --- */
 .delete-form label {
-display: block;
-margin-bottom: 0.5rem;
-font-weight: 500;
-color: #000 !important; /* Made color black and added !important as a final safeguard */
-font-size: 0.95rem;
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #000 !important;
+  font-size: 0.95rem;
 }
-/* --- END LABEL FIX --- */
 
-/* --- FIX FOR INPUT TEXT AND PLACEHOLDER VISIBILITY --- */
 .delete-form input[type='text'] {
-width: 100%;
-padding: 0.9rem 1.2rem;
-border: 2px solid #ddd;
-border-radius: 10px;
-margin-bottom: 1.5rem;
-font-size: 1rem;
-background: #f9f9f9;
-box-sizing: border-box;
-transition: border-color 0.3s, box-shadow 0.3s;
- color: #000 !important; /* Made input text black and added !important */
+  width: 100%;
+  padding: 0.9rem 1.2rem;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+  background: #f9f9f9;
+  box-sizing: border-box;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  color: #000 !important;
 }
+
 .delete-form input[type='text']::placeholder {
-  color: #444; /* Ensure placeholder text is dark */
-  opacity: 1; /* Ensure placeholder opacity is 1 */
+  color: #444;
+  opacity: 1;
 }
 
 .delete-form input[type='text']:focus {
- border-color: #c80000;
- box-shadow: 0 0 5px rgba(200, 0, 0, 0.2);
- background: #fff;
- outline: none;
+  border-color: #c80000;
+  box-shadow: 0 0 5px rgba(200, 0, 0, 0.2);
+  background: #fff;
+  outline: none;
 }
-/* --- END INPUT FIX --- */
-
 
 .checkbox-row {
-display: flex;
-align-items: flex-start;
-margin-bottom: 2rem;
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 2rem;
 }
 
 .checkbox-row input[type='checkbox'] {
-margin-right: 1rem;
-margin-top: 0.2rem;
-appearance: none;
-width: 20px;
-height: 20px;
-border: 2px solid #ccc;
-border-radius: 4px;
-cursor: pointer;
-position: relative;
-flex-shrink: 0;
+  margin-right: 1rem;
+  margin-top: 0.2rem;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  position: relative;
+  flex-shrink: 0;
 }
 
 .checkbox-row input[type='checkbox']:checked {
-background-color: #c80000;
-border-color: #c80000;
+  background-color: #c80000;
+  border-color: #c80000;
 }
 
 .checkbox-row input[type='checkbox']:checked::after {
-content: '✓';
-position: absolute;
-top: 50%;
-left: 50%;
-transform: translate(-50%, -50%);
-color: #000; /* Corrected to white */
-font-size: 14px;
+  content: '✓';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #000;
+  font-size: 14px;
 }
 
-/* --- FIX FOR CHECKBOX LABEL VISIBILITY --- */
 .checkbox-row label {
- font-weight: 400;
- color: #000 !important; /* Made color black and added !important */
- cursor: pointer;
- font-size: 0.95rem;
+  font-weight: 400;
+  color: #000 !important;
+  cursor: pointer;
+  font-size: 0.95rem;
 }
-/* --- END CHECKBOX LABEL FIX --- */
 
 .delete-btn {
-width: 100%;
-padding: 1rem;
-font-size: 1.1rem;
-font-weight: 700;
-color: #fff;
-background-color: #e53935;
-border: none;
-border-radius: 10px;
-cursor: pointer;
-transition: background-color 0.3s, box-shadow 0.3s;
-box-shadow: 0 4px 10px rgba(229, 57, 53, 0.3);
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fff;
+  background-color: #e53935;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  box-shadow: 0 4px 10px rgba(229, 57, 53, 0.3);
 }
 
 .delete-btn:hover:not(:disabled) {
-background-color: #c80000;
-box-shadow: 0 6px 15px rgba(200, 0, 0, 0.4);
+  background-color: #c80000;
+  box-shadow: 0 6px 15px rgba(200, 0, 0, 0.4);
 }
 
 .delete-btn:disabled {
-background-color: #ffcdd2;
-color: #a0a0a0;
-cursor: not-allowed;
-box-shadow: none;
+  background-color: #ffcdd2;
+  color: #a0a0a0;
+  cursor: not-allowed;
+  box-shadow: none;
 }
 
 .message-box {
- margin-top: 1.5rem;
- padding: 1rem;
- border-radius: 8px;
- font-weight: 600;
- text-align: center;
+  margin-top: 1.5rem;
+  padding: 1rem;
+  border-radius: 8px;
+  font-weight: 600;
+  text-align: center;
 }
 
 .success-message {
- background-color: #e8f5e9;
- color: #2e7d32;
- border: 1px solid #4caf50;
+  background-color: #e8f5e9;
+  color: #2e7d32;
+  border: 1px solid #4caf50;
 }
 
 .error-message {
- background-color: #ffebee;
- color: #d32f2f;
- border: 1px solid #e53935;
+  background-color: #ffebee;
+  color: #d32f2f;
+  border: 1px solid #e53935;
 }

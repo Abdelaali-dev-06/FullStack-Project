@@ -1,127 +1,147 @@
 .footer {
-    /* FINAL UPDATE: Solid Black background */
-background-color: #0D47A1; /* Deep Blue */
-color: #FFFFFF;
-    padding: 1.1rem 0.92rem 0.28rem;
-    margin-top: auto;
-  }
-  
+  background: linear-gradient(to right, #052b12, #0B6623);
+  color: var(--color-white);
+  padding: 5rem 0 0;
+  margin-top: auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-accent), var(--color-secondary));
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 3rem;
+  padding-bottom: 4rem;
+}
+
+.footer-logo-section {
+  flex: 1.5;
+  min-width: 280px;
+  max-width: 400px;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.footer-logo img {
+  height: 3rem;
+  margin-right: 1rem;
+}
+
+.footer-logo .logo-text {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--color-white);
+  letter-spacing: -0.5px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.footer-logo .com-text {
+  color: var(--color-accent);
+}
+
+.footer-description {
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 1rem;
+  max-width: 320px;
+}
+
+.footer-links {
+  display: flex;
+  flex: 3;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.footer-column {
+  min-width: 160px;
+}
+
+.footer-column h3 {
+  font-size: 1.2rem;
+  margin-bottom: 1.8rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  position: relative;
+  display: inline-block;
+}
+
+.footer-column h3::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  width: 30px;
+  height: 2px;
+  background: var(--color-secondary);
+  border-radius: 2px;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-column ul li {
+  margin-bottom: 1rem;
+}
+
+.footer-column ul li a {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  display: inline-block;
+}
+
+.footer-column ul li a:hover {
+  color: var(--color-white);
+  transform: translateX(5px);
+}
+
+.footer-bottom {
+  text-align: center;
+  padding: 2rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.heart-text {
+  margin-bottom: 0.8rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.95rem;
+}
+
+.copyright {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.85rem;
+}
+
+@media (max-width: 900px) {
   .footer-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    max-width: 1200px;
-    margin: 0 auto;
-    gap: 0.92rem;
-    padding: 0;
-  }
-  
-  .footer-logo-section {
-    flex: 1;
-    min-width: 166px;
-    max-width: 230px;
-  }
-  
-  .footer-logo {
-    display: flex;
-    align-items: center;
-    margin-bottom: 0.64rem;
-  }
-  
-  .footer-logo img {
-    height: 2.4rem;
-    margin-right: 0.65rem;
-  }
-  
-  .footer-logo .footer-logo-text {
-    font-size: 1.85rem;
-    font-weight: 900;
-    color: #000; 
-    letter-spacing: 1px;
+    flex-direction: column;
+    gap: 3rem;
   }
 
-  .footer-logo .com-text {
-    color: #2ec4b6;
-  }
-  
-  .footer-description {
-    line-height: 1.29;
-    color: rgba(255, 255, 255, 0.8);
-  }
-  
   .footer-links {
-    display: flex;
-    flex: 2;
-    justify-content: space-around;
-    gap: 0.92rem;
-    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 3rem;
   }
-  
-  .footer-column {
-    min-width: 110px;
-  }
-  
-  .footer-column h3 {
-    font-size: 0.92rem;
-    margin-bottom: 0.64rem;
-    font-weight: 600;
-    color: #fff;
-  }
-  
-  .footer-column ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .footer-column ul li {
-    margin-bottom: 0.46rem;
-  }
-  
-  .footer-column ul li a {
-    color: rgba(255, 255, 255, 0.8);
-    text-decoration: none;
-    transition: color 0.3s ease;
-  }
-  
-  .footer-column ul li a:hover {
-    /* Link hover color is the accent Green */
-    color: #2ec4b6;
-  }
-  
-  .footer-bottom {
-    text-align: center;
-    margin-top: 1.1rem;
-    padding-top: 0.46rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-  }
-  
-  .heart-text {
-    margin-bottom: 0.46rem;
-    color: rgba(255, 255, 255, 0.8);
-  }
-  
-  .copyright {
-    color: rgba(255, 255, 255, 0.6);
-    font-size: 0.74rem;
-  }
-  
-  /* Responsive design */
-  @media (max-width: 768px) {
-    .footer-container {
-      flex-direction: column;
-    }
-    
-    .footer-logo-section {
-      text-align: center;
-      max-width: 100%;
-    }
-    
-    .footer-logo {
-      justify-content: center;
-    }
-    
-    .footer-links {
-      text-align: center;
-    }
-  }
+}

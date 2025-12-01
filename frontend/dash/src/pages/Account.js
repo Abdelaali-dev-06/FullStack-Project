@@ -8,7 +8,6 @@ const Account = () => {
   const [current, setCurrent] = useState('');
   const [newPass, setNewPass] = useState('');
 
-  // Extract only the token part after the '|'
   const rawToken = localStorage.getItem('token');
   const token = rawToken ? rawToken.split('|')[1] : '';
 

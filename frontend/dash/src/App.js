@@ -5,11 +5,11 @@ import Account from './pages/Account';
 import Create from './pages/Create';
 import Verify from './pages/Verify';
 import Delete from './pages/Delete';
-import Chat from './pages/Chat';
 import UploadHistory from './pages/UploadHistory';
 import Support from './pages/Support';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import ForgetPassword from './pages/ForgetPassword';
 import Header from './components/Header';
 import SidebarNav from './components/SidebarNav';
 import About from './components/About';
@@ -64,7 +64,6 @@ function DashboardLayout() {
           {activePage === 'verify-download' && <Verify />}
           {activePage === 'create' && <Create />}
           {activePage === 'delete' && <Delete />}
-          {activePage === 'chat' && <Chat />}
           {activePage === 'history' && <UploadHistory />}
           {activePage === 'support' && <Support />}
         </main>
@@ -85,6 +84,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/forget-password" element={<ForgetPassword />} />
         <Route path="/dash" element={<DashboardLayout />} />
         <Route path="/res1" element={<Res1 />} />
         <Route path="/res2" element={<Res2 />} />

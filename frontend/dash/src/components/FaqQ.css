@@ -1,162 +1,141 @@
 .faq-root {
   min-height: 100vh;
-  /* Background gradient is already using our dark theme colors */
-  background: linear-gradient(135deg, #2ec4b6 0%, #000000 40%, #000000 50%, #000000 60%,#2ec4b6 100%);
-  padding: 2rem 1rem;
-  color: white;
+  background-color: var(--color-background);
   padding-top: 120px;
-  width: 100%;
-  margin: 0;
-  box-sizing: border-box;
+  padding-bottom: 80px;
+  color: var(--color-text);
+  position: relative;
+  z-index: 1;
 }
 
 .faq-container {
-  max-width: 1200px;
+  max-width: 1000px;
   margin: 0 auto;
-  padding: 2rem;
-  width: 100%;
-  box-sizing: border-box;
+  padding: 0 20px;
 }
 
 .faq-title {
-  font-size: 2.5rem;
-  font-weight: 900;
+  font-size: 3rem;
+  font-weight: 800;
   text-align: center;
-  margin-bottom: 1rem;
-  /* UPDATED: Changed from orange to Accent Green */
-  color: #2ec4b6;
+  margin-bottom: 1.5rem;
+  color: var(--color-primary);
 }
 
 .faq-subtitle {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   line-height: 1.6;
   text-align: center;
-  margin-bottom: 3rem;
-  color: rgba(255, 255, 255, 0.9);
-  max-width: 800px;
+  margin-bottom: 4rem;
+  color: var(--color-text-light);
+  max-width: 700px;
   margin-left: auto;
   margin-right: auto;
 }
 
 .faq-content {
-  background: #181818;
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
-  padding: 2.5rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  box-sizing: border-box;
+  background: var(--color-white);
+  border-radius: 24px;
+  padding: 3rem;
+  box-shadow: 0 10px 30px rgba(13, 47, 27, 0.05);
+  border: 1px solid rgba(13, 47, 27, 0.05);
 }
 
 .faq-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  padding: 1rem;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
   margin-bottom: 3rem;
-  width: 100%;
-  box-sizing: border-box;
 }
 
 .faq-box {
-  background: white ;
-  border-radius: 15px;
+  background: var(--color-background);
+  border-radius: 16px;
   padding: 2rem;
   text-align: left;
-  transition: transform 0.3s ease;
-  width: 100%;
-  box-sizing: border-box;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
 }
 
 .faq-box:hover {
-  transform: translateY(-5px);
-  /* Slightly more transparent white on hover */
-  background: whitesmoke; 
+  transform: translateY(-3px);
+  background: var(--color-white);
+  box-shadow: 0 10px 20px rgba(13, 47, 27, 0.05);
+  border-color: var(--color-accent);
 }
 
 .faq-question {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-weight: 700;
   margin-bottom: 1rem;
-  /* UPDATED: Changed from orange to Accent Green */
-  color: #2ec4b6;
+  color: var(--color-primary);
 }
 
 .faq-answer {
   font-size: 1rem;
-  line-height: 1.5;
-  color: black;
+  line-height: 1.6;
+  color: var(--color-text-light);
   margin: 0;
 }
 
 .faq-actions {
   display: flex;
   justify-content: center;
-  gap: 2rem;
+  gap: 1.5rem;
   margin-top: 3rem;
-  width: 100%;
-  box-sizing: border-box;
+  flex-wrap: wrap;
 }
 
 .faq-button {
-  padding: 1rem 2rem;
-  border-radius: 8px;
+  padding: 1rem 2.5rem;
+  border-radius: 50px;
   font-weight: 600;
   text-decoration: none;
-  transition: transform 0.3s, background-color 0.3s;
+  transition: all 0.3s ease;
   text-align: center;
-  min-width: 200px;
+  font-size: 1rem;
 }
 
-/* UPDATED: Blog button uses a smooth green gradient */
 .blog-button {
-  background: linear-gradient(90deg, #2ec4b6 0%, #0ee623 100%);
-  color: white;
+  background: var(--color-primary);
+  color: var(--color-white);
   border: none;
 }
 
-/* UPDATED: Contact button is now an outlined style using Accent Green */
-.contact-button {
-  background: transparent;
-  color: #2ec4b6; /* Accent Green text */
-  border: 2px solid #2ec4b6; /* Accent Green border */
+.blog-button:hover {
+  background: #1A4D2E;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(13, 47, 27, 0.2);
 }
 
-.faq-button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(46, 196, 182, 0.3); /* Green shadow on hover */
+.contact-button {
+  background: transparent;
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+}
+
+.contact-button:hover {
+  background: var(--color-primary);
+  color: var(--color-white);
+  transform: translateY(-2px);
 }
 
 @media (max-width: 768px) {
-  .faq-container {
-    padding: 1rem;
-  }
-  
   .faq-title {
-    font-size: 2rem;
+    font-size: 2.5rem;
   }
-  
-  .faq-subtitle {
-    font-size: 1rem;
-  }
-  
+
   .faq-content {
-    padding: 1.5rem;
+    padding: 2rem;
   }
-  
-  .faq-grid {
-    grid-template-columns: 1fr;
-  }
-  
+
   .faq-actions {
     flex-direction: column;
-    gap: 1.5rem;
+    align-items: center;
   }
-  
+
   .faq-button {
-    width: 76%; 
-    max-width: 300px; 
-    min-width: 0; 
-    margin: 0 auto;
+    width: 100%;
+    max-width: 300px;
   }
-} 
+}

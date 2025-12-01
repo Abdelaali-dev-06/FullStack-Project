@@ -12,36 +12,16 @@ const Header = ({ isMobile, navOpen, setNavOpen }) => {
       navigate('/');
       return;
     }
-    try {
-      const response = await fetch('http://127.0.0.1:8000/api/logout', {
-        method: 'POST',
-        headers: {
-          'Authorization': 'Bearer ' + token.split('|')[1],
-          'Accept': 'application/json',
-        },
-      });
-      if (response.ok) {
-        localStorage.removeItem('token');
-        navigate('/');
-      } else {
-        alert('Logout failed.');
-      }
-    } catch (error) {
-      alert('Logout failed.');
-    }
   };
 
   return (
     <header className="dashboard-header">
-      <div className="brand">CERTA.com</div>
+      <div className="brand">Administration</div>
       {isMobile && (
         <button className="header-hamburger" onClick={() => setNavOpen(!navOpen)}>
           <FaBars size={26} />
         </button>
       )}
-      <button className="logout-btn compact" onClick={handleLogout} title="Logout">
-        <FiLogOut style={{marginRight: '0.4rem', fontSize: '1.2rem'}} /> Logout
-      </button>
     </header>
   );
 };

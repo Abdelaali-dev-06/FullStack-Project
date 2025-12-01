@@ -10,19 +10,19 @@ function Id2({ verificationData, onBack }) {
       </div>
 
       <div className="verification-details">
-        <div className="detail-section">
+        <div className="detail-section inactive-section">
           <h3>Document Information</h3>
           <p><strong>File ID:</strong> {verificationData.file_id}</p>
           <p><strong>Status:</strong> Inactive</p>
         </div>
 
-        <div className="detail-section">
+        <div className="detail-section inactive-section">
           <h3>Blockchain Data</h3>
           <p><strong>Operation ID:</strong> {verificationData.blockchain_data.operation_id}</p>
           <p><strong>School ID:</strong> {verificationData.blockchain_data.school_id}</p>
           <p><strong>File ID:</strong> {verificationData.blockchain_data.file_id}</p>
           <p><strong>Original Hash:</strong> {verificationData.blockchain_data.original_hash}</p>
-          <p><strong>Processed Hash:</strong> {verificationData.blockchain_data.processed_hash}</p>
+          {/* <p><strong>Processed Hash:</strong> {verificationData.blockchain_data.processed_hash}</p> */}
         </div>
 
         <button onClick={onBack} className="back-button">

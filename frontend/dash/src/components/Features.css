@@ -1,153 +1,78 @@
-/* Features.css */
-
-/* 1. Overall Page Root (Handles Gradient Background and Top-Level Centering) */
 .features-root {
   min-height: 100vh;
-  /* Confirmed: Gradient background */
-  background: linear-gradient(135deg, #2ec4b6 0%, #000000 40%, #000000 50%, #000000 60%,#2ec4b6 100%);
-  color: white; 
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-  padding: 140px 10px 60px 10px; 
-  align-items: center; 
+  background-color: var(--color-background);
+  padding-top: 120px;
+  padding-bottom: 80px;
+  position: relative;
+  z-index: 1;
 }
 
-/* Main Title OUTSIDE the black box, styled white on the gradient background */
-.features-main-title {
-  font-size: 2.5rem;
-  font-weight: 900;
+.features-header {
   text-align: center;
-  margin-bottom: 2rem;
-  color: #2ec4b6; 
+  max-width: 800px;
+  margin: 0 auto 60px;
 }
 
-/* 2. Main Content Container (The "One Box" - BLACK) */
-.features-container {
-  max-width: 1000px; 
-  width: 95%; 
-  margin: 0 auto; 
-  padding: 3rem; 
-  background: #181818; /* BLACK background for the main box */
-  border-radius: 20px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4); 
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
+.features-main-title {
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  margin-bottom: 1.5rem;
 }
 
-/* FIX: Subtitle INSIDE the black box, styled white */
-.features-main-subtitle-in-box {
-    font-size: 1.2rem;
-    text-align: center;
-    max-width: 800px;
-    margin: 0 auto 3rem auto; /* Added space below subtitle */
-    color: rgba(255, 255, 255, 0.9); /* White text on black background */
+.features-main-subtitle {
+  font-size: 1.2rem;
+  color: var(--color-text-light);
+  line-height: 1.6;
 }
 
-/* 3. Features Grid */
 .features-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); 
-  gap: 1.5rem; 
-  padding: 0;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
 }
 
-/* 4. Individual Feature Box (Inner boxes - WHITE) */
-.feature-box {
-  background: #fff; /* WHITE background for the individual feature box */
-  border-radius: 12px;
-  padding: 1rem; 
-  text-align: center;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-  width: auto; 
-  box-sizing: border-box;
-  display: flex; 
-  flex-direction: column;
+.feature-spotlight {
+  padding: 2.5rem;
+}
+
+.feature-icon-wrapper {
+  width: 60px;
+  height: 60px;
+  background: var(--color-secondary);
+  border-radius: 16px;
+  display: flex;
   align-items: center;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); 
-  border: none;
+  justify-content: center;
+  margin-bottom: 1.5rem;
 }
 
-/* Smooth hover effect with Accent Green shadow */
-.feature-box:hover {
-  transform: translateY(-4px) scale(1.01);
-  box-shadow: 0 6px 20px rgba(46, 196, 182, 0.6); 
-}
-
-/* Feature Content Box (Inner box with the black border around text) */
-.feature-content-box {
-    background: #fff;
-    border: 3px solid white; /* Black border as requested */
-    border-radius: 12px;
-    padding: 1.5rem;
-    width: 100%;
-    color: #32194a; 
-    box-sizing: border-box;
-}
-
-/* Style for icons (Accent Green) */
 .feature-icon {
-  color: #2ec4b6;
-  font-size: 3rem;
-  margin-bottom: 0.5rem; 
+  font-size: 2rem;
 }
 
-/* Style for headings (h3 remains outside the inner border, Accent Green) */
-.feature-box .feature-title {
-    color: #2ec4b6; 
-    font-size: 1.3rem;
-    font-weight: 700;
-    margin-top: 0;
-    margin-bottom: 1rem; 
+.feature-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 1rem;
 }
 
-/* Description text inside the new content box */
-.feature-content-box .feature-description {
-    font-size: 0.95rem;
-    line-height: 1.6;
-    margin: 0;
-    text-align: center;
+.feature-description {
+  font-size: 1rem;
+  color: var(--color-text-light);
+  line-height: 1.6;
+  margin: 0;
 }
 
-/*
-  ==============================================
-  Mobile View Adjustments (Responsiveness)
-  ==============================================
-*/
-@media (max-width: 992px) {
-  /* Switch to 2 columns on tablets */
-  .features-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-  }
-}
-
-@media (max-width: 650px) {
-  /* Switch to 1 column on mobile phones */
-  .features-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-  
-  .features-container {
-    padding: 2rem 1rem; 
-  }
-
+@media (max-width: 768px) {
   .features-main-title {
-    font-size: 2rem;
+    font-size: 2.5rem;
   }
-  
-  .features-main-subtitle-in-box {
-      font-size: 1rem;
-      margin-bottom: 2rem;
-  }
-  
-  .feature-box {
-    padding: 0.5rem;
-  }
-  
-  .feature-content-box {
-      padding: 1rem;
+
+  .feature-card {
+    padding: 2rem;
+    align-items: center;
+    text-align: center;
   }
 }

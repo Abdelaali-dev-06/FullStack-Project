@@ -1,24 +1,25 @@
 .support-container {
-  max-width: 450px;
+  max-width: 500px;
   margin: 60px auto;
-  background: #FFFFFF;
-  border-radius: 12px;
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.15);
-  padding: 32px 0;
+  background: var(--color-white);
+  border-radius: 24px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  padding: 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Montserrat', sans-serif;
+  border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .support-title-main {
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: #000000;
-    margin-bottom: 30px;
-    text-align: center;
-    border-bottom: 3px solid #2ec4b6;
-    padding-bottom: 10px;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 30px;
+  text-align: center;
+  border-bottom: 3px solid var(--color-accent);
+  padding-bottom: 10px;
 }
 
 .support-option {
@@ -27,32 +28,33 @@
   align-items: center;
   padding: 20px 0;
   cursor: pointer;
-  width: 90%;
-  border-radius: 8px;
-  transition: background-color 0.3s ease;
+  width: 100%;
+  border-radius: 16px;
+  transition: all 0.3s ease;
 }
 
 .support-option:hover {
-  background-color: #f0fdfa;
+  background-color: var(--color-secondary);
+  transform: translateY(-2px);
 }
 
 .support-icon {
   width: 40px;
   height: 40px;
-  color: #2ec4b6;
+  color: var(--color-primary);
   margin-bottom: 10px;
 }
 
 .support-title {
   font-size: 1.25rem;
   font-weight: 600;
-  color: #000000;
+  color: var(--color-primary);
   margin-bottom: 4px;
 }
 
 .support-subtitle {
   font-size: 0.95rem;
-  color: #444;
+  color: var(--color-text-light);
   margin-bottom: 2px;
   text-align: center;
 }
@@ -65,30 +67,32 @@
 }
 
 .support-subtitle a {
-  color: #2ec4b6;
+  color: var(--color-primary);
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 600;
   transition: color 0.3s ease;
 }
 
 .support-subtitle a:hover {
-  color: #000000;
+  color: #0A2615;
   text-decoration: underline;
 }
 
 @media (max-width: 600px) {
-    .support-container {
-        margin: 20px auto;
-        border-radius: 0;
-        box-shadow: none;
-        padding: 20px 0;
-        max-width: 100%;
-    }
-    .support-title-main {
-        font-size: 1.5rem;
-        margin-bottom: 20px;
-    }
-    .support-option {
-        width: 100%;
-    }
+  .support-container {
+    margin: 20px auto;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 20px 0;
+    max-width: 100%;
+  }
+
+  .support-title-main {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+
+  .support-option {
+    width: 100%;
+  }
 }

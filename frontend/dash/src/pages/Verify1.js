@@ -9,7 +9,6 @@ function Verify1({ verificationData, onBack }) {
         throw new Error('No authentication token found');
       }
 
-      // Extract the token part after the "|"
       const token = fullToken.split('|')[1];
       if (!token) {
         throw new Error('Invalid token format');
@@ -27,23 +26,18 @@ function Verify1({ verificationData, onBack }) {
         throw new Error('Download failed');
       }
 
-      // Get the blob from the response
       const blob = await response.blob();
       
-      // Create a URL for the blob
       const downloadUrl = window.URL.createObjectURL(blob);
       
-      // Create a temporary link element
       const link = document.createElement('a');
       link.href = downloadUrl;
-      link.download = `document_${verificationData.file_id}.pdf`; // Set the filename
+      link.download = `document_${verificationData.file_id}.pdf`;
       
-      // Append to body, click, and remove
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
       
-      // Clean up the URL
       window.URL.revokeObjectURL(downloadUrl);
     } catch (error) {
       console.error('Download error:', error);
@@ -71,7 +65,7 @@ function Verify1({ verificationData, onBack }) {
           <p><strong>School ID:</strong> {verificationData.blockchain_data.school_id}</p>
           <p><strong>File ID:</strong> {verificationData.blockchain_data.file_id}</p>
           <p><strong>Original Hash:</strong> {verificationData.blockchain_data.original_hash}</p>
-          <p><strong>Processed Hash:</strong> {verificationData.blockchain_data.processed_hash}</p>
+          {/* <p><strong>Processed Hash:</strong> {verificationData.blockchain_data.processed_hash}</p> */}
         </div>
 
         <div className="download-section">
@@ -82,12 +76,6 @@ function Verify1({ verificationData, onBack }) {
               className="download-button"
             >
               Download Original PDF
-            </button>
-            <button 
-              onClick={() => handleDownload(verificationData.download_links.updated)}
-              className="download-button"
-            >
-              Download Processed PDF
             </button>
           </div>
         </div>

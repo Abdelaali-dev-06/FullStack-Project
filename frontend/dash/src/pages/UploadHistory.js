@@ -13,7 +13,6 @@ function UploadHistory() {
   useEffect(() => {
     if (view === 'certificates') fetchCertificates(page);
     if (view === 'documents') fetchDocuments(page);
-    // eslint-disable-next-line
   }, [view, page]);
 
   const extractTokenAndSchoolId = () => {
